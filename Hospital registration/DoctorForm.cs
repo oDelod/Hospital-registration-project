@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,8 @@ namespace Hospital_registration
             InitializeHoursList(); // Виклик методу для заповнення годин
             this.loggedInUserId = loggedInUserId;
             this.loggedInUserIdOtherRoles = loggedInUserIdOtherRoles;
+            LoadUnapprovedAppointments();
+
 
         }
 
@@ -45,23 +48,19 @@ namespace Hospital_registration
 
         private void WorkHListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Цей метод може залишити пустим, або ви можете додати додатковий код,
-            // який виконується при виборі елемента, якщо потрібно.
         }
 
         private void WorkHListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             if (e.NewValue == CheckState.Checked)
             {
-                // Код, який виконується, коли вибраний новий елемент
-                // Наприклад, можна додати вибраний час роботи до списку годин
+
                 string selectedHour = WorkHListBox1.Items[e.Index].ToString();
                 selectedHoursList.Add(selectedHour);
             }
             else if (e.NewValue == CheckState.Unchecked)
             {
-                // Код, який виконується, коли елемент скасований вибір
-                // Наприклад, можна видалити скасований час роботи зі списку годин
+
                 string selectedHour = WorkHListBox1.Items[e.Index].ToString();
                 selectedHoursList.Remove(selectedHour);
             }
@@ -120,9 +119,107 @@ namespace Hospital_registration
 
             MessageBox.Show("Робочі години збережено.");
         }
-    }
+        private void LoadUnapprovedAppointments()
+        {
+            using (DB db = new DB())
+            {
+                db.openConnection();
 
+                string selectQuery = "SELECT u.UID, u.Name,a.Id, u.Surname, a.Day, a.Hour, a.status, a.information " +
+                                     "FROM appointments AS a " +
+                                     "INNER JOIN users AS u ON a.patient_id = u.UID " +
+                                     "WHERE a.status = 'available' AND a.doctor_id = @doctorId AND a.patient_id IS NOT NULL";
+
+                MySqlCommand command = new MySqlCommand(selectQuery, db.GetConnection());
+                command.Parameters.AddWithValue("@doctorId", loggedInUserIdOtherRoles);
+
+                DataTable dataTable = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dataTable);
+
+                // Встановити DataTable як DataSource для DataGridView
+                dataGridViewAppointments.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    int rowIndex = dataGridViewAppointments.Rows.Add();
+                    DataGridViewRow dataGridViewRow = dataGridViewAppointments.Rows[rowIndex];
+                    dataGridViewRow.Cells["Name"].Value = row["Name"];
+                    dataGridViewRow.Cells["Surname"].Value = row["Surname"];
+                    dataGridViewRow.Cells["Day"].Value = row["Day"];
+                    dataGridViewRow.Cells["Hour"].Value = row["Hour"];
+                    dataGridViewRow.Cells["status"].Value = row["status"];
+                    dataGridViewRow.Cells["ColID"].Value = row["id"]; // Приховане значення "ID"
+                }
+
+
+
+
+
+
+
+            }
+
+            // Оновити DataGridView
+            dataGridViewAppointments.Update();
+            dataGridViewAppointments.Refresh();
+        }
+        private void ApproveAppointment(int appointmentId)
+        {
+            using (DB db = new DB())
+            {
+                db.openConnection();
+
+                string updateQuery = "UPDATE appointments SET status = 'booked' WHERE id = @appointmentId";
+
+                MySqlCommand updateCommand = new MySqlCommand(updateQuery, db.GetConnection());
+                updateCommand.Parameters.AddWithValue("@appointmentId", appointmentId);
+
+                int rowsAffected = updateCommand.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Запис пацієнта затверджено.");
+                    LoadUnapprovedAppointments();
+                }
+                else
+                {
+                    MessageBox.Show("Помилка під час затвердження запису.");
+                }
+            }
+        }
+
+        private void dataGridViewAppointments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewAppointments_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("1");
+            if (e.ColumnIndex == dataGridViewAppointments.Columns["ColID"].Index && e.RowIndex >= 0)
+            {
+                MessageBox.Show("2");
+                // Отримати значення ID з вибраного рядка
+                int appointmentId = Convert.ToInt32(dataGridViewAppointments.Rows[e.RowIndex].Cells["ColID"].Value);
+
+                // Викликати метод ApproveAppointment і передати appointmentId
+                ApproveAppointment(appointmentId);
+                // Відобразити appointmentId в MessageBox
+                MessageBox.Show(appointmentId.ToString());
+            }
+        }
+
+        private void dataGridViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }
 }
+
+
+
+
+
+
 
 
 
