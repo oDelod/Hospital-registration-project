@@ -30,8 +30,6 @@ namespace Hospital_registration
             this.loggedInUserId = loggedInUserId;
             this.loggedInUserIdOtherRoles = loggedInUserIdOtherRoles;
             LoadUnapprovedAppointments();
-
-
         }
 
         private void InitializeHoursList()
@@ -143,20 +141,13 @@ namespace Hospital_registration
                 {
                     int rowIndex = dataGridViewAppointments.Rows.Add();
                     DataGridViewRow dataGridViewRow = dataGridViewAppointments.Rows[rowIndex];
-                    dataGridViewRow.Cells["Name"].Value = row["Name"];
-                    dataGridViewRow.Cells["Surname"].Value = row["Surname"];
-                    dataGridViewRow.Cells["Day"].Value = row["Day"];
-                    dataGridViewRow.Cells["Hour"].Value = row["Hour"];
-                    dataGridViewRow.Cells["status"].Value = row["status"];
-                    dataGridViewRow.Cells["ColID"].Value = row["id"]; // Приховане значення "ID"
+                    dataGridViewRow.Cells["TName"].Value = row["Name"];
+                    dataGridViewRow.Cells["TSurname"].Value = row["Surname"];
+                    dataGridViewRow.Cells["TDay"].Value = row["Day"];
+                    dataGridViewRow.Cells["THour"].Value = row["Hour"];
+                    dataGridViewRow.Cells["TInformation"].Value = row["information"];
+                    dataGridViewRow.Cells["CofId"].Value = row["id"]; // Приховане значення "ID"
                 }
-
-
-
-
-
-
-
             }
 
             // Оновити DataGridView
@@ -186,20 +177,14 @@ namespace Hospital_registration
                 }
             }
         }
-
-        private void dataGridViewAppointments_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dataGridViewAppointments_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             MessageBox.Show("1");
-            if (e.ColumnIndex == dataGridViewAppointments.Columns["ColID"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dataGridViewAppointments.Columns["CofId"].Index && e.RowIndex >= 0)
             {
                 MessageBox.Show("2");
                 // Отримати значення ID з вибраного рядка
-                int appointmentId = Convert.ToInt32(dataGridViewAppointments.Rows[e.RowIndex].Cells["ColID"].Value);
+                int appointmentId = Convert.ToInt32(dataGridViewAppointments.Rows[e.RowIndex].Cells["CofId"].Value);
 
                 // Викликати метод ApproveAppointment і передати appointmentId
                 ApproveAppointment(appointmentId);
@@ -208,10 +193,6 @@ namespace Hospital_registration
             }
         }
 
-        private void dataGridViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
 

@@ -36,12 +36,12 @@
             panel2 = new Panel();
             closeButton = new Label();
             label1 = new Label();
-            Name = new DataGridViewTextBoxColumn();
-            ColID = new DataGridViewTextBoxColumn();
-            Surname = new DataGridViewTextBoxColumn();
-            Day = new DataGridViewTextBoxColumn();
-            Hour = new DataGridViewTextBoxColumn();
-            status = new DataGridViewTextBoxColumn();
+            CofId = new DataGridViewTextBoxColumn();
+            TName = new DataGridViewTextBoxColumn();
+            TSurname = new DataGridViewTextBoxColumn();
+            THour = new DataGridViewTextBoxColumn();
+            TDay = new DataGridViewTextBoxColumn();
+            TInformation = new DataGridViewTextBoxColumn();
             TAcceptStatus = new DataGridViewButtonColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
@@ -66,7 +66,7 @@
             // dataGridViewAppointments
             // 
             dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewAppointments.Columns.AddRange(new DataGridViewColumn[] { Name, ColID, Surname, Day, Hour, status, TAcceptStatus });
+            dataGridViewAppointments.Columns.AddRange(new DataGridViewColumn[] { CofId, TName, TSurname, THour, TDay, TInformation, TAcceptStatus });
             dataGridViewAppointments.Location = new Point(58, 498);
             dataGridViewAppointments.MultiSelect = false;
             dataGridViewAppointments.Name = "dataGridViewAppointments";
@@ -74,7 +74,6 @@
             dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewAppointments.Size = new Size(1604, 262);
             dataGridViewAppointments.TabIndex = 7;
-            dataGridViewAppointments.CellClick += dataGridViewAppointments_CellClick;
             dataGridViewAppointments.CellContentClick += dataGridViewAppointments_CellContentClick_1;
             // 
             // btnSaveWorkingHours
@@ -154,52 +153,48 @@
             label1.Text = "Log In";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // Name
+            // CofId
             // 
-            Name.FillWeight = 1F;
-            Name.HeaderText = "Name";
-            Name.MinimumWidth = 9;
-            Name.Name = "Name";
-            Name.Width = 175;
+            CofId.HeaderText = "CofId";
+            CofId.MinimumWidth = 9;
+            CofId.Name = "CofId";
+            CofId.Width = 175;
             // 
-            // ColID
+            // TName
             // 
-            ColID.HeaderText = "iD";
-            ColID.MinimumWidth = 9;
-            ColID.Name = "ColID";
-            ColID.Width = 175;
+            TName.HeaderText = "Name";
+            TName.MinimumWidth = 9;
+            TName.Name = "TName";
+            TName.Width = 175;
             // 
-            // Surname
+            // TSurname
             // 
-            Surname.FillWeight = 1F;
-            Surname.HeaderText = "Surname";
-            Surname.MinimumWidth = 9;
-            Surname.Name = "Surname";
-            Surname.Width = 142;
+            TSurname.HeaderText = "Surname";
+            TSurname.MinimumWidth = 9;
+            TSurname.Name = "TSurname";
+            TSurname.Width = 175;
             // 
-            // Day
+            // THour
             // 
-            Day.FillWeight = 1F;
-            Day.HeaderText = "Time";
-            Day.MinimumWidth = 9;
-            Day.Name = "Day";
-            Day.Width = 175;
+            THour.FillWeight = 1F;
+            THour.HeaderText = "Time";
+            THour.MinimumWidth = 9;
+            THour.Name = "THour";
+            THour.Width = 175;
             // 
-            // Hour
+            // TDay
             // 
-            Hour.FillWeight = 1F;
-            Hour.HeaderText = "Hour";
-            Hour.MinimumWidth = 9;
-            Hour.Name = "Hour";
-            Hour.Width = 175;
+            TDay.HeaderText = "Day";
+            TDay.MinimumWidth = 9;
+            TDay.Name = "TDay";
+            TDay.Width = 175;
             // 
-            // status
+            // TInformation
             // 
-            status.FillWeight = 1F;
-            status.HeaderText = "Status";
-            status.MinimumWidth = 9;
-            status.Name = "status";
-            status.Width = 175;
+            TInformation.HeaderText = "Information";
+            TInformation.MinimumWidth = 9;
+            TInformation.Name = "TInformation";
+            TInformation.Width = 175;
             // 
             // TAcceptStatus
             // 
@@ -235,12 +230,12 @@
         private CheckedListBox WorkHListBox1;
         private Button btnSaveWorkingHours;
         private DataGridView dataGridViewAppointments;
-        private DataGridViewTextBoxColumn Name;
-        private DataGridViewTextBoxColumn ColID;
-        private DataGridViewTextBoxColumn Surname;
-        private DataGridViewTextBoxColumn Day;
-        private DataGridViewTextBoxColumn Hour;
-        private DataGridViewTextBoxColumn status;
+        private DataGridViewTextBoxColumn CofId;
+        private DataGridViewTextBoxColumn TName;
+        private DataGridViewTextBoxColumn TSurname;
+        private DataGridViewTextBoxColumn THour;
+        private DataGridViewTextBoxColumn TDay;
+        private DataGridViewTextBoxColumn TInformation;
         private DataGridViewButtonColumn TAcceptStatus;
     }
 }
