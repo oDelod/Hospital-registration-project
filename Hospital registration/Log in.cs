@@ -107,7 +107,7 @@ namespace Hospital_registration
                     switch (userRole)
                     {
                         case "Patient":
-                            PatientForm patientForm = new PatientForm();
+                            PatientForm patientForm = new PatientForm(loggedInUserId);
                             patientForm.Show();
                             break;
                         case "Doctor":

@@ -30,6 +30,7 @@ namespace Hospital_registration
             this.loggedInUserId = loggedInUserId;
             this.loggedInUserIdOtherRoles = loggedInUserIdOtherRoles;
             LoadUnapprovedAppointments();
+            LoadApprovedAppointments();
         }
 
         private void InitializeHoursList()
@@ -180,7 +181,7 @@ namespace Hospital_registration
         private void dataGridViewAppointments_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             MessageBox.Show("1");
-            if (e.ColumnIndex == dataGridViewAppointments.Columns["CofId"].Index && e.RowIndex >= 0)
+            string appointmentIdText = dataGridViewAppointments.Rows[e.RowIndex].Cells["CofId"].Value.ToString();
             {
                 MessageBox.Show("2");
                 // Отримати значення ID з вибраного рядка
@@ -193,6 +194,47 @@ namespace Hospital_registration
             }
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void LoadApprovedAppointments()
+        {
+            using (DB db = new DB())
+            {
+                db.openConnection();
+
+                string selectQuery = "SELECT u.UID, u.Name,a.Id, u.Surname, a.Day, a.Hour, a.status, a.information " +
+                                     "FROM appointments AS a " +
+                                     "INNER JOIN users AS u ON a.patient_id = u.UID " +
+                                     "WHERE a.status = 'booked' AND a.doctor_id = @doctorId AND a.patient_id IS NOT NULL";
+
+                MySqlCommand command = new MySqlCommand(selectQuery, db.GetConnection());
+                command.Parameters.AddWithValue("@doctorId", loggedInUserIdOtherRoles);
+
+                DataTable dataTable = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dataTable);
+
+                // Встановити DataTable як DataSource для DataGridView
+                dataGridView1.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    int rowIndex = dataGridView1.Rows.Add();
+                    DataGridViewRow dataGridViewRow = dataGridView1.Rows[rowIndex];
+                    dataGridViewRow.Cells["TuName"].Value = row["Name"];
+                    dataGridViewRow.Cells["TuSurname"].Value = row["Surname"];
+                    dataGridViewRow.Cells["TuDay"].Value = row["Day"];
+                    dataGridViewRow.Cells["TuHour"].Value = row["Hour"];
+                    dataGridViewRow.Cells["TuInformation"].Value = row["information"];
+                    dataGridViewRow.Cells["CofuId"].Value = row["id"]; // Приховане значення "ID"
+                }
+            }
+
+            // Оновити DataGridView
+            dataGridView1.Update();
+            dataGridView1.Refresh();
+        }
     }
 }
 

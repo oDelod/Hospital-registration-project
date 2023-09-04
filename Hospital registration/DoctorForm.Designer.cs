@@ -29,13 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            dataGridView1 = new DataGridView();
             dataGridViewAppointments = new DataGridView();
-            btnSaveWorkingHours = new Button();
-            WorkHListBox1 = new CheckedListBox();
-            monthCalendar1 = new MonthCalendar();
-            panel2 = new Panel();
-            closeButton = new Label();
-            label1 = new Label();
             CofId = new DataGridViewTextBoxColumn();
             TName = new DataGridViewTextBoxColumn();
             TSurname = new DataGridViewTextBoxColumn();
@@ -43,7 +38,20 @@
             TDay = new DataGridViewTextBoxColumn();
             TInformation = new DataGridViewTextBoxColumn();
             TAcceptStatus = new DataGridViewButtonColumn();
+            btnSaveWorkingHours = new Button();
+            WorkHListBox1 = new CheckedListBox();
+            monthCalendar1 = new MonthCalendar();
+            panel2 = new Panel();
+            closeButton = new Label();
+            label1 = new Label();
+            CofuId = new DataGridViewTextBoxColumn();
+            TuName = new DataGridViewTextBoxColumn();
+            TuSurname = new DataGridViewTextBoxColumn();
+            TuHour = new DataGridViewTextBoxColumn();
+            TuDay = new DataGridViewTextBoxColumn();
+            TuInformation = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -51,6 +59,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(37, 165, 190);
+            panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(dataGridViewAppointments);
             panel1.Controls.Add(btnSaveWorkingHours);
             panel1.Controls.Add(WorkHListBox1);
@@ -60,8 +69,21 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1747, 842);
+            panel1.Size = new Size(1747, 1017);
             panel1.TabIndex = 2;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CofuId, TuName, TuSurname, TuHour, TuDay, TuInformation });
+            dataGridView1.Location = new Point(58, 699);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 72;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1604, 161);
+            dataGridView1.TabIndex = 8;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // dataGridViewAppointments
             // 
@@ -72,9 +94,61 @@
             dataGridViewAppointments.Name = "dataGridViewAppointments";
             dataGridViewAppointments.RowHeadersWidth = 72;
             dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewAppointments.Size = new Size(1604, 262);
+            dataGridViewAppointments.Size = new Size(1604, 161);
             dataGridViewAppointments.TabIndex = 7;
             dataGridViewAppointments.CellContentClick += dataGridViewAppointments_CellContentClick_1;
+            // 
+            // CofId
+            // 
+            CofId.HeaderText = "CofId";
+            CofId.MinimumWidth = 9;
+            CofId.Name = "CofId";
+            CofId.Visible = false;
+            CofId.Width = 175;
+            // 
+            // TName
+            // 
+            TName.HeaderText = "Name";
+            TName.MinimumWidth = 9;
+            TName.Name = "TName";
+            TName.Width = 175;
+            // 
+            // TSurname
+            // 
+            TSurname.HeaderText = "Surname";
+            TSurname.MinimumWidth = 9;
+            TSurname.Name = "TSurname";
+            TSurname.Width = 175;
+            // 
+            // THour
+            // 
+            THour.FillWeight = 1F;
+            THour.HeaderText = "Time";
+            THour.MinimumWidth = 9;
+            THour.Name = "THour";
+            THour.Width = 175;
+            // 
+            // TDay
+            // 
+            TDay.HeaderText = "Day";
+            TDay.MinimumWidth = 9;
+            TDay.Name = "TDay";
+            TDay.Width = 175;
+            // 
+            // TInformation
+            // 
+            TInformation.HeaderText = "Information";
+            TInformation.MinimumWidth = 9;
+            TInformation.Name = "TInformation";
+            TInformation.Width = 175;
+            // 
+            // TAcceptStatus
+            // 
+            TAcceptStatus.FillWeight = 1F;
+            TAcceptStatus.HeaderText = "TAccept Status";
+            TAcceptStatus.MinimumWidth = 9;
+            TAcceptStatus.Name = "TAcceptStatus";
+            TAcceptStatus.Width = 175;
             // 
             // btnSaveWorkingHours
             // 
@@ -153,67 +227,61 @@
             label1.Text = "Log In";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // CofId
+            // CofuId
             // 
-            CofId.HeaderText = "CofId";
-            CofId.MinimumWidth = 9;
-            CofId.Name = "CofId";
-            CofId.Width = 175;
+            CofuId.HeaderText = "CofuId";
+            CofuId.MinimumWidth = 9;
+            CofuId.Name = "CofuId";
+            CofuId.Visible = false;
+            CofuId.Width = 175;
             // 
-            // TName
+            // TuName
             // 
-            TName.HeaderText = "Name";
-            TName.MinimumWidth = 9;
-            TName.Name = "TName";
-            TName.Width = 175;
+            TuName.HeaderText = "Name";
+            TuName.MinimumWidth = 9;
+            TuName.Name = "TuName";
+            TuName.Width = 175;
             // 
-            // TSurname
+            // TuSurname
             // 
-            TSurname.HeaderText = "Surname";
-            TSurname.MinimumWidth = 9;
-            TSurname.Name = "TSurname";
-            TSurname.Width = 175;
+            TuSurname.HeaderText = "Surname";
+            TuSurname.MinimumWidth = 9;
+            TuSurname.Name = "TuSurname";
+            TuSurname.Width = 175;
             // 
-            // THour
+            // TuHour
             // 
-            THour.FillWeight = 1F;
-            THour.HeaderText = "Time";
-            THour.MinimumWidth = 9;
-            THour.Name = "THour";
-            THour.Width = 175;
+            TuHour.FillWeight = 1F;
+            TuHour.HeaderText = "Time";
+            TuHour.MinimumWidth = 9;
+            TuHour.Name = "TuHour";
+            TuHour.Width = 175;
             // 
-            // TDay
+            // TuDay
             // 
-            TDay.HeaderText = "Day";
-            TDay.MinimumWidth = 9;
-            TDay.Name = "TDay";
-            TDay.Width = 175;
+            TuDay.HeaderText = "Day";
+            TuDay.MinimumWidth = 9;
+            TuDay.Name = "TuDay";
+            TuDay.Width = 175;
             // 
-            // TInformation
+            // TuInformation
             // 
-            TInformation.HeaderText = "Information";
-            TInformation.MinimumWidth = 9;
-            TInformation.Name = "TInformation";
-            TInformation.Width = 175;
-            // 
-            // TAcceptStatus
-            // 
-            TAcceptStatus.FillWeight = 1F;
-            TAcceptStatus.HeaderText = "TAccept Status";
-            TAcceptStatus.MinimumWidth = 9;
-            TAcceptStatus.Name = "TAcceptStatus";
-            TAcceptStatus.Width = 175;
+            TuInformation.HeaderText = "Information";
+            TuInformation.MinimumWidth = 9;
+            TuInformation.Name = "TuInformation";
+            TuInformation.Width = 175;
             // 
             // DoctorForm
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1747, 842);
+            ClientSize = new Size(1747, 1017);
             Controls.Add(panel1);
             Margin = new Padding(4);
             Name = "DoctorForm";
             Text = "DoctorForm";
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -230,6 +298,7 @@
         private CheckedListBox WorkHListBox1;
         private Button btnSaveWorkingHours;
         private DataGridView dataGridViewAppointments;
+        private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn CofId;
         private DataGridViewTextBoxColumn TName;
         private DataGridViewTextBoxColumn TSurname;
@@ -237,5 +306,11 @@
         private DataGridViewTextBoxColumn TDay;
         private DataGridViewTextBoxColumn TInformation;
         private DataGridViewButtonColumn TAcceptStatus;
+        private DataGridViewTextBoxColumn CofuId;
+        private DataGridViewTextBoxColumn TuName;
+        private DataGridViewTextBoxColumn TuSurname;
+        private DataGridViewTextBoxColumn TuHour;
+        private DataGridViewTextBoxColumn TuDay;
+        private DataGridViewTextBoxColumn TuInformation;
     }
 }
