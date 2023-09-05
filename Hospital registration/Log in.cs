@@ -116,7 +116,7 @@ namespace Hospital_registration
                             doctorForm.Show();
                             break;
                         case "Assistant":
-                            AssistantForm assistantForm = new AssistantForm();
+                            AssistantForm assistantForm = new AssistantForm(loggedInUserIdOtherRoles);
                             assistantForm.Show();
                             break;
                         case "Administrator":

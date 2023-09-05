@@ -29,7 +29,29 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            MedicineText = new Label();
+            ReferalText = new Label();
+            ConclusionText = new Label();
+            DescriptionText = new Label();
+            dataGridView2 = new DataGridView();
+            IID = new DataGridViewTextBoxColumn();
+            Birth = new DataGridViewTextBoxColumn();
+            INAME = new DataGridViewTextBoxColumn();
+            ISURNAME = new DataGridViewTextBoxColumn();
+            ITAME = new DataGridViewTextBoxColumn();
+            IDAY = new DataGridViewTextBoxColumn();
+            SaveButton = new Button();
+            ReferalTextBox = new TextBox();
+            MedecineTextBox = new TextBox();
+            ConsultationTextBox = new TextBox();
+            recordTypeComboBox = new ComboBox();
             dataGridView1 = new DataGridView();
+            CofuId = new DataGridViewTextBoxColumn();
+            TuName = new DataGridViewTextBoxColumn();
+            TuSurname = new DataGridViewTextBoxColumn();
+            TuHour = new DataGridViewTextBoxColumn();
+            TuDay = new DataGridViewTextBoxColumn();
+            TuInformation = new DataGridViewTextBoxColumn();
             dataGridViewAppointments = new DataGridView();
             CofId = new DataGridViewTextBoxColumn();
             TName = new DataGridViewTextBoxColumn();
@@ -44,13 +66,9 @@
             panel2 = new Panel();
             closeButton = new Label();
             label1 = new Label();
-            CofuId = new DataGridViewTextBoxColumn();
-            TuName = new DataGridViewTextBoxColumn();
-            TuSurname = new DataGridViewTextBoxColumn();
-            TuHour = new DataGridViewTextBoxColumn();
-            TuDay = new DataGridViewTextBoxColumn();
-            TuInformation = new DataGridViewTextBoxColumn();
+            ConsulionTextBox = new TextBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
             panel2.SuspendLayout();
@@ -59,6 +77,17 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(37, 165, 190);
+            panel1.Controls.Add(ConsulionTextBox);
+            panel1.Controls.Add(MedicineText);
+            panel1.Controls.Add(ReferalText);
+            panel1.Controls.Add(ConclusionText);
+            panel1.Controls.Add(DescriptionText);
+            panel1.Controls.Add(dataGridView2);
+            panel1.Controls.Add(SaveButton);
+            panel1.Controls.Add(ReferalTextBox);
+            panel1.Controls.Add(MedecineTextBox);
+            panel1.Controls.Add(ConsultationTextBox);
+            panel1.Controls.Add(recordTypeComboBox);
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(dataGridViewAppointments);
             panel1.Controls.Add(btnSaveWorkingHours);
@@ -72,6 +101,154 @@
             panel1.Size = new Size(1747, 1017);
             panel1.TabIndex = 2;
             // 
+            // MedicineText
+            // 
+            MedicineText.AutoSize = true;
+            MedicineText.Location = new Point(1123, 324);
+            MedicineText.Name = "MedicineText";
+            MedicineText.Size = new Size(98, 30);
+            MedicineText.TabIndex = 19;
+            MedicineText.Text = "Medicine";
+            // 
+            // ReferalText
+            // 
+            ReferalText.AutoSize = true;
+            ReferalText.Location = new Point(1123, 423);
+            ReferalText.Name = "ReferalText";
+            ReferalText.Size = new Size(77, 30);
+            ReferalText.TabIndex = 18;
+            ReferalText.Text = "Referal";
+            // 
+            // ConclusionText
+            // 
+            ConclusionText.AutoSize = true;
+            ConclusionText.Location = new Point(1123, 532);
+            ConclusionText.Name = "ConclusionText";
+            ConclusionText.Size = new Size(115, 30);
+            ConclusionText.TabIndex = 17;
+            ConclusionText.Text = "Conclusion";
+            // 
+            // DescriptionText
+            // 
+            DescriptionText.AutoSize = true;
+            DescriptionText.Location = new Point(1123, 227);
+            DescriptionText.Name = "DescriptionText";
+            DescriptionText.Size = new Size(118, 30);
+            DescriptionText.TabIndex = 16;
+            DescriptionText.Text = "Description";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { IID, Birth, INAME, ISURNAME, ITAME, IDAY });
+            dataGridView2.Location = new Point(955, 772);
+            dataGridView2.MultiSelect = false;
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 72;
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.Size = new Size(598, 161);
+            dataGridView2.TabIndex = 15;
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            // 
+            // IID
+            // 
+            IID.HeaderText = "CofuId";
+            IID.MinimumWidth = 9;
+            IID.Name = "IID";
+            IID.Visible = false;
+            IID.Width = 175;
+            // 
+            // Birth
+            // 
+            Birth.HeaderText = "Birth";
+            Birth.MinimumWidth = 9;
+            Birth.Name = "Birth";
+            Birth.Width = 175;
+            // 
+            // INAME
+            // 
+            INAME.HeaderText = "Name";
+            INAME.MinimumWidth = 9;
+            INAME.Name = "INAME";
+            INAME.Width = 175;
+            // 
+            // ISURNAME
+            // 
+            ISURNAME.HeaderText = "Surname";
+            ISURNAME.MinimumWidth = 9;
+            ISURNAME.Name = "ISURNAME";
+            ISURNAME.Width = 175;
+            // 
+            // ITAME
+            // 
+            ITAME.FillWeight = 1F;
+            ITAME.HeaderText = "Time";
+            ITAME.MinimumWidth = 9;
+            ITAME.Name = "ITAME";
+            ITAME.Width = 175;
+            // 
+            // IDAY
+            // 
+            IDAY.HeaderText = "Day";
+            IDAY.MinimumWidth = 9;
+            IDAY.Name = "IDAY";
+            IDAY.Width = 175;
+            // 
+            // SaveButton
+            // 
+            SaveButton.BackColor = Color.FromArgb(37, 150, 190);
+            SaveButton.Cursor = Cursors.Hand;
+            SaveButton.FlatAppearance.BorderColor = Color.FromArgb(37, 150, 190);
+            SaveButton.FlatAppearance.BorderSize = 0;
+            SaveButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(37, 150, 190);
+            SaveButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(37, 150, 190);
+            SaveButton.FlatStyle = FlatStyle.Flat;
+            SaveButton.Font = new Font("Times New Roman", 20.1428585F, FontStyle.Regular, GraphicsUnit.Point);
+            SaveButton.ForeColor = Color.White;
+            SaveButton.Location = new Point(1090, 681);
+            SaveButton.Margin = new Padding(4);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(401, 84);
+            SaveButton.TabIndex = 14;
+            SaveButton.Text = "Save";
+            SaveButton.UseVisualStyleBackColor = false;
+            SaveButton.Click += SaveButton_Click;
+            // 
+            // ReferalTextBox
+            // 
+            ReferalTextBox.Location = new Point(955, 468);
+            ReferalTextBox.Multiline = true;
+            ReferalTextBox.Name = "ReferalTextBox";
+            ReferalTextBox.Size = new Size(656, 61);
+            ReferalTextBox.TabIndex = 12;
+            // 
+            // MedecineTextBox
+            // 
+            MedecineTextBox.Location = new Point(955, 359);
+            MedecineTextBox.Multiline = true;
+            MedecineTextBox.Name = "MedecineTextBox";
+            MedecineTextBox.Size = new Size(656, 61);
+            MedecineTextBox.TabIndex = 11;
+            // 
+            // ConsultationTextBox
+            // 
+            ConsultationTextBox.Location = new Point(955, 260);
+            ConsultationTextBox.Multiline = true;
+            ConsultationTextBox.Name = "ConsultationTextBox";
+            ConsultationTextBox.Size = new Size(656, 61);
+            ConsultationTextBox.TabIndex = 10;
+            // 
+            // recordTypeComboBox
+            // 
+            recordTypeComboBox.FormattingEnabled = true;
+            recordTypeComboBox.Items.AddRange(new object[] { "Consultation", "Referal", "Medecine" });
+            recordTypeComboBox.Location = new Point(1123, 172);
+            recordTypeComboBox.Name = "recordTypeComboBox";
+            recordTypeComboBox.Size = new Size(212, 38);
+            recordTypeComboBox.TabIndex = 9;
+            recordTypeComboBox.SelectedIndexChanged += recordTypeComboBox_SelectedIndexChanged_1;
+            recordTypeComboBox.TabIndexChanged += recordTypeComboBox_TabIndexChanged;
+            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -81,9 +258,53 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 72;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1604, 161);
+            dataGridView1.Size = new Size(598, 161);
             dataGridView1.TabIndex = 8;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // CofuId
+            // 
+            CofuId.HeaderText = "CofuId";
+            CofuId.MinimumWidth = 9;
+            CofuId.Name = "CofuId";
+            CofuId.Visible = false;
+            CofuId.Width = 175;
+            // 
+            // TuName
+            // 
+            TuName.HeaderText = "Name";
+            TuName.MinimumWidth = 9;
+            TuName.Name = "TuName";
+            TuName.Width = 175;
+            // 
+            // TuSurname
+            // 
+            TuSurname.HeaderText = "Surname";
+            TuSurname.MinimumWidth = 9;
+            TuSurname.Name = "TuSurname";
+            TuSurname.Width = 175;
+            // 
+            // TuHour
+            // 
+            TuHour.FillWeight = 1F;
+            TuHour.HeaderText = "Time";
+            TuHour.MinimumWidth = 9;
+            TuHour.Name = "TuHour";
+            TuHour.Width = 175;
+            // 
+            // TuDay
+            // 
+            TuDay.HeaderText = "Day";
+            TuDay.MinimumWidth = 9;
+            TuDay.Name = "TuDay";
+            TuDay.Width = 175;
+            // 
+            // TuInformation
+            // 
+            TuInformation.HeaderText = "Information";
+            TuInformation.MinimumWidth = 9;
+            TuInformation.Name = "TuInformation";
+            TuInformation.Width = 175;
             // 
             // dataGridViewAppointments
             // 
@@ -94,7 +315,7 @@
             dataGridViewAppointments.Name = "dataGridViewAppointments";
             dataGridViewAppointments.RowHeadersWidth = 72;
             dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewAppointments.Size = new Size(1604, 161);
+            dataGridViewAppointments.Size = new Size(598, 161);
             dataGridViewAppointments.TabIndex = 7;
             dataGridViewAppointments.CellContentClick += dataGridViewAppointments_CellContentClick_1;
             // 
@@ -159,21 +380,21 @@
             btnSaveWorkingHours.FlatAppearance.MouseDownBackColor = Color.FromArgb(37, 150, 190);
             btnSaveWorkingHours.FlatAppearance.MouseOverBackColor = Color.FromArgb(37, 150, 190);
             btnSaveWorkingHours.FlatStyle = FlatStyle.Flat;
-            btnSaveWorkingHours.Font = new Font("Times New Roman", 26F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSaveWorkingHours.Font = new Font("Times New Roman", 20.1428585F, FontStyle.Regular, GraphicsUnit.Point);
             btnSaveWorkingHours.ForeColor = Color.White;
-            btnSaveWorkingHours.Location = new Point(428, 389);
+            btnSaveWorkingHours.Location = new Point(360, 389);
             btnSaveWorkingHours.Margin = new Padding(4);
             btnSaveWorkingHours.Name = "btnSaveWorkingHours";
             btnSaveWorkingHours.Size = new Size(401, 84);
             btnSaveWorkingHours.TabIndex = 6;
-            btnSaveWorkingHours.Text = "Next";
+            btnSaveWorkingHours.Text = "SaveWorkingHours";
             btnSaveWorkingHours.UseVisualStyleBackColor = false;
             btnSaveWorkingHours.Click += btnSaveWorkingHours_Click;
             // 
             // WorkHListBox1
             // 
             WorkHListBox1.FormattingEnabled = true;
-            WorkHListBox1.Location = new Point(470, 182);
+            WorkHListBox1.Location = new Point(546, 195);
             WorkHListBox1.Margin = new Padding(4);
             WorkHListBox1.Name = "WorkHListBox1";
             WorkHListBox1.Size = new Size(215, 164);
@@ -227,49 +448,13 @@
             label1.Text = "Log In";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // CofuId
+            // ConsulionTextBox
             // 
-            CofuId.HeaderText = "CofuId";
-            CofuId.MinimumWidth = 9;
-            CofuId.Name = "CofuId";
-            CofuId.Visible = false;
-            CofuId.Width = 175;
-            // 
-            // TuName
-            // 
-            TuName.HeaderText = "Name";
-            TuName.MinimumWidth = 9;
-            TuName.Name = "TuName";
-            TuName.Width = 175;
-            // 
-            // TuSurname
-            // 
-            TuSurname.HeaderText = "Surname";
-            TuSurname.MinimumWidth = 9;
-            TuSurname.Name = "TuSurname";
-            TuSurname.Width = 175;
-            // 
-            // TuHour
-            // 
-            TuHour.FillWeight = 1F;
-            TuHour.HeaderText = "Time";
-            TuHour.MinimumWidth = 9;
-            TuHour.Name = "TuHour";
-            TuHour.Width = 175;
-            // 
-            // TuDay
-            // 
-            TuDay.HeaderText = "Day";
-            TuDay.MinimumWidth = 9;
-            TuDay.Name = "TuDay";
-            TuDay.Width = 175;
-            // 
-            // TuInformation
-            // 
-            TuInformation.HeaderText = "Information";
-            TuInformation.MinimumWidth = 9;
-            TuInformation.Name = "TuInformation";
-            TuInformation.Width = 175;
+            ConsulionTextBox.Location = new Point(955, 583);
+            ConsulionTextBox.Multiline = true;
+            ConsulionTextBox.Name = "ConsulionTextBox";
+            ConsulionTextBox.Size = new Size(656, 61);
+            ConsulionTextBox.TabIndex = 20;
             // 
             // DoctorForm
             // 
@@ -281,6 +466,8 @@
             Name = "DoctorForm";
             Text = "DoctorForm";
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
             panel2.ResumeLayout(false);
@@ -312,5 +499,22 @@
         private DataGridViewTextBoxColumn TuHour;
         private DataGridViewTextBoxColumn TuDay;
         private DataGridViewTextBoxColumn TuInformation;
+        private ComboBox recordTypeComboBox;
+        private Button SaveButton;
+        private TextBox ReferalTextBox;
+        private TextBox MedecineTextBox;
+        private TextBox ConsultationTextBox;
+        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn IID;
+        private DataGridViewTextBoxColumn INAME;
+        private DataGridViewTextBoxColumn ISURNAME;
+        private DataGridViewTextBoxColumn ITAME;
+        private DataGridViewTextBoxColumn IDAY;
+        private DataGridViewTextBoxColumn Birth;
+        private Label DescriptionText;
+        private Label MedicineText;
+        private Label ReferalText;
+        private Label ConclusionText;
+        private TextBox ConsulionTextBox;
     }
 }

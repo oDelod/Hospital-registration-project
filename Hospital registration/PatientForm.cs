@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Hospital_registration
@@ -24,7 +25,9 @@ namespace Hospital_registration
             LoadSpecialties();
             this.loggedInUserId = loggedInUserId;
             MessageBox.Show(loggedInUserId.ToString());
-
+            FillDataGridView();
+            FillDataGridViewMed();
+            FillDataGrivRef();
         }
 
         private void closeButton_Click(object sender, EventArgs e)
@@ -107,20 +110,20 @@ namespace Hospital_registration
         }
 
         private void Day_SelectedIndexChanged(object sender, EventArgs e)
-        
-            {
-                if (Day.SelectedIndex >= 0)
-                {
-                    int selectedIndex = doctorsListBox.SelectedIndex;
-                    int selectedDoctorId = doctorIdDictionary[selectedIndex];
-                    string selectedDayStr = Day.SelectedItem.ToString();
-                    DateTime selectedDay = DateTime.ParseExact(selectedDayStr, "dd/MM/yyyy", null);
 
-                    // Викликати метод для завантаження доступних годин для обраного дня і лікаря
-                    LoadAvailableHours(selectedDoctorId, selectedDay);
-                }
+        {
+            if (Day.SelectedIndex >= 0)
+            {
+                int selectedIndex = doctorsListBox.SelectedIndex;
+                int selectedDoctorId = doctorIdDictionary[selectedIndex];
+                string selectedDayStr = Day.SelectedItem.ToString();
+                DateTime selectedDay = DateTime.ParseExact(selectedDayStr, "dd/MM/yyyy", null);
+
+                // Викликати метод для завантаження доступних годин для обраного дня і лікаря
+                LoadAvailableHours(selectedDoctorId, selectedDay);
             }
-        
+        }
+
         private void LoadDoctorAvailability(int doctorId)
         {
 
@@ -147,7 +150,7 @@ namespace Hospital_registration
                 db.closeConnection();
             }
         }
-    
+
         private void SaveInformation_Click(object sender, EventArgs e)
         {
             if (doctorsListBox.SelectedIndex >= 0 && Day.SelectedIndex >= 0 && !string.IsNullOrEmpty(Hours.Text) && !string.IsNullOrEmpty(Information.Text))
@@ -173,44 +176,44 @@ namespace Hospital_registration
                 MessageBox.Show("Будь ласка, заповніть всі поля перед збереженням.");
             }
         }
-            private void UpdateAppointmentWithPatientId(int doctorId, DateTime selectedDay, string selectedTime, string information, int patientId)
+        private void UpdateAppointmentWithPatientId(int doctorId, DateTime selectedDay, string selectedTime, string information, int patientId)
+        {
+            using (DB db = new DB())
             {
-                using (DB db = new DB())
+                db.openConnection();
+
+                string updateQuery = "UPDATE `appointments` " +
+                                     "SET `patient_id` = @patientId, `status` = 'available', `information` = @information " +
+                                     "WHERE `doctor_id` = @doctorId AND `Day` = @day AND `Hour` = @hour";
+
+                MySqlCommand updateCommand = new MySqlCommand(updateQuery, db.GetConnection());
+                updateCommand.Parameters.AddWithValue("@doctorId", doctorId);
+                updateCommand.Parameters.AddWithValue("@day", selectedDay);
+                updateCommand.Parameters.AddWithValue("@hour", selectedTime);
+                updateCommand.Parameters.AddWithValue("@patientId", patientId);
+                updateCommand.Parameters.AddWithValue("@information", information);
+
+                try
                 {
-                    db.openConnection();
-
-                    string updateQuery = "UPDATE `appointments` " +
-                                         "SET `patient_id` = @patientId, `status` = 'available', `information` = @information " +
-                                         "WHERE `doctor_id` = @doctorId AND `Day` = @day AND `Hour` = @hour";
-
-                    MySqlCommand updateCommand = new MySqlCommand(updateQuery, db.GetConnection());
-                    updateCommand.Parameters.AddWithValue("@doctorId", doctorId);
-                    updateCommand.Parameters.AddWithValue("@day", selectedDay);
-                    updateCommand.Parameters.AddWithValue("@hour", selectedTime);
-                    updateCommand.Parameters.AddWithValue("@patientId", patientId);
-                    updateCommand.Parameters.AddWithValue("@information", information);
-
-                    try
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
                     {
-                        int rowsAffected = updateCommand.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Запис пацієнта збережено.");
-                            // Додайте оновлення списку доступних записів лікаря
-                        }
-                        else
-                        {
-                            MessageBox.Show("Помилка при оновленні запису.");
-                        }
+                        MessageBox.Show("Запис пацієнта збережено.");
+                        // Додайте оновлення списку доступних записів лікаря
                     }
-                    catch (MySqlException ex)
+                    else
                     {
-                        MessageBox.Show("Помилка при оновленні запису: " + ex.Message);
+                        MessageBox.Show("Помилка при оновленні запису.");
                     }
-
-                    db.closeConnection();
                 }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Помилка при оновленні запису: " + ex.Message);
+                }
+
+                db.closeConnection();
             }
+        }
 
         private void LoadAvailableHours(int doctorId, DateTime selectedDay)
         {
@@ -239,8 +242,166 @@ namespace Hospital_registration
             }
         }
 
+        private void Consultation_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        { }
+
+        private void FillDataGridView()
+        {
+            int patientId = loggedInUserId; // Замініть це на ідентифікатор вашого пацієнта
+
+            using (DB db = new DB())
+            {
+                db.openConnection();
+
+                string query = "SELECT " +
+ "u.Name AS DoctorName, u.Surname AS DoctorSurname, u.Specialization AS DoctorSpecialization, " +
+ "ma.MeetingDate, ma.Description, ma.Conclusion " +
+ "FROM medicalappointments ma " +
+ "INNER JOIN users u ON ma.DoctorID = u.UID " +
+ "WHERE ma.PatientID = @patientId AND ma.MeetingType = 'Consultation'";
+
+
+
+                MySqlCommand command = new MySqlCommand(query, db.GetConnection());
+
+                command.Parameters.AddWithValue("@patientId", patientId);
+
+                DataTable dataTable = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dataTable);
+
+                // Встановлюємо DataTable як DataSource для DataGridView
+                ConsultationGridView.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    int rowIndex = ConsultationGridView.Rows.Add();
+                    DataGridViewRow dataGridViewRow = ConsultationGridView.Rows[rowIndex];
+                    dataGridViewRow.Cells["DoctorName"].Value = dataRow["DoctorName"];
+                    dataGridViewRow.Cells["DoctorSurname"].Value = dataRow["DoctorSurname"];
+                    dataGridViewRow.Cells["DSpecialization"].Value = dataRow["DoctorSpecialization"];
+                    dataGridViewRow.Cells["MeetingDate"].Value = dataRow["MeetingDate"];
+                    dataGridViewRow.Cells["Description"].Value = dataRow["Description"];
+
+
+                    dataGridViewRow.Cells["Conclusion"].Value = dataRow["Conclusion"]; // Приховане значення "ID"
+                }
+            }
+
+            // Оновити DataGridView
+            ConsultationGridView.Update();
+            ConsultationGridView.Refresh();
+
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void FillDataGridViewMed()
+        {
+            int patientId = loggedInUserId; // Замініть це на ідентифікатор вашого пацієнта
+
+            using (DB db = new DB())
+            {
+                db.openConnection();
+                string query = "SELECT " +
+                 "u.Name AS DoctorName, u.Surname AS DoctorSurname, u.Specialization AS DoctorSpecialization, " +
+                 "ma.MeetingDate, ma.Medications, ma.Conclusion " +
+                 "FROM medicalappointments ma " +
+                 "INNER JOIN users u ON ma.DoctorID = u.UID " +
+                 "WHERE ma.PatientID = @patientId AND ma.MeetingType = 'Medecine'";
+
+
+
+                MySqlCommand command = new MySqlCommand(query, db.GetConnection());
+
+                command.Parameters.AddWithValue("@patientId", patientId);
+
+                DataTable dataTable = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dataTable);
+
+                // Встановлюємо DataTable як DataSource для DataGridView
+                dataGridView1.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    int rowIndex = dataGridView1.Rows.Add();
+                    DataGridViewRow dataGridViewRow = dataGridView1.Rows[rowIndex];
+                    dataGridViewRow.Cells["DoctorName1"].Value = dataRow["DoctorName"];
+                    dataGridViewRow.Cells["DoctorSurname1"].Value = dataRow["DoctorSurname"];
+                    dataGridViewRow.Cells["DSpecialization1"].Value = dataRow["DoctorSpecialization"];
+                    dataGridViewRow.Cells["MeetingDate1"].Value = dataRow["MeetingDate"];
+                    dataGridViewRow.Cells["Medications"].Value = dataRow["Medications"];
+
+
+
+                }
+            }
+
+            // Оновити DataGridView
+            dataGridView1.Update();
+            dataGridView1.Refresh();
+
+
+        }
+       
+        
+             private void FillDataGrivRef()
+        {
+                int patientId = loggedInUserId; // Замініть це на ідентифікатор вашого пацієнта
+
+                using (DB db = new DB())
+                {
+                    db.openConnection();
+                    string query = "SELECT " +
+                     "u.Name AS DoctorName, u.Surname AS DoctorSurname, u.Specialization AS DoctorSpecialization, " +
+                     "ma.MeetingDate, ma.Referral, ma.Conclusion " +
+                     "FROM medicalappointments ma " +
+                     "INNER JOIN users u ON ma.DoctorID = u.UID " +
+                     "WHERE ma.PatientID = @patientId AND ma.MeetingType = 'Referal'";
+
+
+
+                    MySqlCommand command = new MySqlCommand(query, db.GetConnection());
+
+                    command.Parameters.AddWithValue("@patientId", patientId);
+
+                    DataTable dataTable = new DataTable();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+
+                // Встановлюємо DataTable як DataSource для DataGridView
+                dataGridView2.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+                    foreach (DataRow dataRow in dataTable.Rows)
+                    {
+                        int rowIndex = dataGridView2.Rows.Add();
+                        DataGridViewRow dataGridViewRow = dataGridView2.Rows[rowIndex];
+                        dataGridViewRow.Cells["DoctorName2"].Value = dataRow["DoctorName"];
+                        dataGridViewRow.Cells["DoctorSurname2"].Value = dataRow["DoctorSurname"];
+                        dataGridViewRow.Cells["DSpecialization2"].Value = dataRow["DoctorSpecialization"];
+                        dataGridViewRow.Cells["MeetingDate2"].Value = dataRow["MeetingDate"];
+                        dataGridViewRow.Cells["Referal"].Value = dataRow["Referral"];
+
+
+
+                    }
+                }
+
+                // Оновити DataGridView
+                dataGridView2.Update();
+                dataGridView2.Refresh();
+
+
+            }
+        }
     }
 
-}
+
+
+
+
+
+
 
 
