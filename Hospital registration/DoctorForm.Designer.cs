@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            ConsulionTextBox = new TextBox();
             MedicineText = new Label();
             ReferalText = new Label();
             ConclusionText = new Label();
@@ -66,7 +67,6 @@
             panel2 = new Panel();
             closeButton = new Label();
             label1 = new Label();
-            ConsulionTextBox = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -100,6 +100,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1747, 1017);
             panel1.TabIndex = 2;
+            // 
+            // ConsulionTextBox
+            // 
+            ConsulionTextBox.Location = new Point(955, 583);
+            ConsulionTextBox.Multiline = true;
+            ConsulionTextBox.Name = "ConsulionTextBox";
+            ConsulionTextBox.Size = new Size(656, 61);
+            ConsulionTextBox.TabIndex = 20;
             // 
             // MedicineText
             // 
@@ -237,6 +245,7 @@
             ConsultationTextBox.Name = "ConsultationTextBox";
             ConsultationTextBox.Size = new Size(656, 61);
             ConsultationTextBox.TabIndex = 10;
+            ConsultationTextBox.TextChanged += ConsultationTextBox_TextChanged;
             // 
             // recordTypeComboBox
             // 
@@ -428,7 +437,7 @@
             closeButton.Cursor = Cursors.Hand;
             closeButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(907, 0);
+            closeButton.Location = new Point(1693, 0);
             closeButton.Margin = new Padding(4, 0, 4, 0);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(50, 48);
@@ -445,16 +454,8 @@
             label1.Name = "label1";
             label1.Size = new Size(1747, 134);
             label1.TabIndex = 0;
-            label1.Text = "Log In";
+            label1.Text = "Doctor office";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // ConsulionTextBox
-            // 
-            ConsulionTextBox.Location = new Point(955, 583);
-            ConsulionTextBox.Multiline = true;
-            ConsulionTextBox.Name = "ConsulionTextBox";
-            ConsulionTextBox.Size = new Size(656, 61);
-            ConsulionTextBox.TabIndex = 20;
             // 
             // DoctorForm
             // 

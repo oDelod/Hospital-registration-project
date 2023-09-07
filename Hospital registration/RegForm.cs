@@ -326,6 +326,11 @@ namespace Hospital_registration
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

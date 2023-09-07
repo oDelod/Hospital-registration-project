@@ -345,57 +345,57 @@ namespace Hospital_registration
 
 
         }
-       
-        
-             private void FillDataGrivRef()
+
+
+        private void FillDataGrivRef()
         {
-                int patientId = loggedInUserId; // Замініть це на ідентифікатор вашого пацієнта
+            int patientId = loggedInUserId; // Замініть це на ідентифікатор вашого пацієнта
 
-                using (DB db = new DB())
-                {
-                    db.openConnection();
-                    string query = "SELECT " +
-                     "u.Name AS DoctorName, u.Surname AS DoctorSurname, u.Specialization AS DoctorSpecialization, " +
-                     "ma.MeetingDate, ma.Referral, ma.Conclusion " +
-                     "FROM medicalappointments ma " +
-                     "INNER JOIN users u ON ma.DoctorID = u.UID " +
-                     "WHERE ma.PatientID = @patientId AND ma.MeetingType = 'Referal'";
+            using (DB db = new DB())
+            {
+                db.openConnection();
+                string query = "SELECT " +
+                 "u.Name AS DoctorName, u.Surname AS DoctorSurname, u.Specialization AS DoctorSpecialization, " +
+                 "ma.MeetingDate, ma.Referral, ma.Conclusion " +
+                 "FROM medicalappointments ma " +
+                 "INNER JOIN users u ON ma.DoctorID = u.UID " +
+                 "WHERE ma.PatientID = @patientId AND ma.MeetingType = 'Referal'";
 
 
 
-                    MySqlCommand command = new MySqlCommand(query, db.GetConnection());
+                MySqlCommand command = new MySqlCommand(query, db.GetConnection());
 
-                    command.Parameters.AddWithValue("@patientId", patientId);
+                command.Parameters.AddWithValue("@patientId", patientId);
 
-                    DataTable dataTable = new DataTable();
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                    adapter.Fill(dataTable);
+                DataTable dataTable = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(dataTable);
 
                 // Встановлюємо DataTable як DataSource для DataGridView
                 dataGridView2.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
-                    foreach (DataRow dataRow in dataTable.Rows)
-                    {
-                        int rowIndex = dataGridView2.Rows.Add();
-                        DataGridViewRow dataGridViewRow = dataGridView2.Rows[rowIndex];
-                        dataGridViewRow.Cells["DoctorName2"].Value = dataRow["DoctorName"];
-                        dataGridViewRow.Cells["DoctorSurname2"].Value = dataRow["DoctorSurname"];
-                        dataGridViewRow.Cells["DSpecialization2"].Value = dataRow["DoctorSpecialization"];
-                        dataGridViewRow.Cells["MeetingDate2"].Value = dataRow["MeetingDate"];
-                        dataGridViewRow.Cells["Referal"].Value = dataRow["Referral"];
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    int rowIndex = dataGridView2.Rows.Add();
+                    DataGridViewRow dataGridViewRow = dataGridView2.Rows[rowIndex];
+                    dataGridViewRow.Cells["DoctorName2"].Value = dataRow["DoctorName"];
+                    dataGridViewRow.Cells["DoctorSurname2"].Value = dataRow["DoctorSurname"];
+                    dataGridViewRow.Cells["DSpecialization2"].Value = dataRow["DoctorSpecialization"];
+                    dataGridViewRow.Cells["MeetingDate2"].Value = dataRow["MeetingDate"];
+                    dataGridViewRow.Cells["Referal"].Value = dataRow["Referral"];
 
 
 
-                    }
                 }
-
-                // Оновити DataGridView
-                dataGridView2.Update();
-                dataGridView2.Refresh();
-
-
             }
+
+            // Оновити DataGridView
+            dataGridView2.Update();
+            dataGridView2.Refresh();
+
+
         }
     }
+}
 
 
 

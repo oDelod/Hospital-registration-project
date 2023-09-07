@@ -128,6 +128,7 @@ namespace Hospital_registration
 
             MessageBox.Show("Робочі години збережено.");
         }
+        //Next Step ----------------------------------------------------------------
         private void LoadUnapprovedAppointments()
         {
             using (DB db = new DB())
@@ -247,7 +248,7 @@ namespace Hospital_registration
         }
 
 
-
+        //Consultation
 
         private void recordTypeComboBox_TabIndexChanged(object sender, EventArgs e)
         {
@@ -415,6 +416,10 @@ namespace Hospital_registration
             }
         }
 
+        private void ConsultationTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

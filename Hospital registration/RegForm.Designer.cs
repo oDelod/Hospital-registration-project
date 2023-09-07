@@ -70,11 +70,13 @@
             label1.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlLightLight;
             label1.Location = new Point(0, 0);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(1059, 112);
+            label1.Size = new Size(1271, 134);
             label1.TabIndex = 0;
-            label1.Text = "Log In";
+            label1.Text = "Registration";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Click += label1_Click;
             // 
             // panel1
             // 
@@ -108,8 +110,9 @@
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1059, 896);
+            panel1.Size = new Size(1271, 1075);
             panel1.TabIndex = 1;
             panel1.MouseDown += panel1_MouseDown;
             panel1.MouseMove += panel1_MouseMove;
@@ -125,9 +128,10 @@
             HaveAccountButton.FlatStyle = FlatStyle.Flat;
             HaveAccountButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             HaveAccountButton.ForeColor = Color.White;
-            HaveAccountButton.Location = new Point(391, 798);
+            HaveAccountButton.Location = new Point(469, 958);
+            HaveAccountButton.Margin = new Padding(4, 4, 4, 4);
             HaveAccountButton.Name = "HaveAccountButton";
-            HaveAccountButton.Size = new Size(260, 60);
+            HaveAccountButton.Size = new Size(312, 72);
             HaveAccountButton.TabIndex = 28;
             HaveAccountButton.Text = "Have account";
             HaveAccountButton.UseVisualStyleBackColor = false;
@@ -139,9 +143,10 @@
             // 
             label10.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label10.ForeColor = SystemColors.ControlLightLight;
-            label10.Location = new Point(566, 464);
+            label10.Location = new Point(679, 557);
+            label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(427, 38);
+            label10.Size = new Size(512, 46);
             label10.TabIndex = 27;
             label10.Text = "Post index";
             label10.TextAlign = ContentAlignment.MiddleCenter;
@@ -150,9 +155,10 @@
             // 
             label11.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.ControlLightLight;
-            label11.Location = new Point(729, 357);
+            label11.Location = new Point(875, 428);
+            label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(264, 38);
+            label11.Size = new Size(317, 46);
             label11.TabIndex = 26;
             label11.Text = "Adress";
             label11.TextAlign = ContentAlignment.MiddleCenter;
@@ -160,27 +166,30 @@
             // PostIndexRField
             // 
             PostIndexRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            PostIndexRField.Location = new Point(566, 505);
+            PostIndexRField.Location = new Point(679, 606);
+            PostIndexRField.Margin = new Padding(4, 4, 4, 4);
             PostIndexRField.Name = "PostIndexRField";
-            PostIndexRField.Size = new Size(427, 63);
+            PostIndexRField.Size = new Size(512, 72);
             PostIndexRField.TabIndex = 25;
             // 
             // AdressRField
             // 
             AdressRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            AdressRField.Location = new Point(729, 397);
+            AdressRField.Location = new Point(875, 476);
+            AdressRField.Margin = new Padding(4, 4, 4, 4);
             AdressRField.Multiline = true;
             AdressRField.Name = "AdressRField";
-            AdressRField.Size = new Size(264, 64);
+            AdressRField.Size = new Size(316, 76);
             AdressRField.TabIndex = 24;
             // 
             // label12
             // 
             label12.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label12.ForeColor = SystemColors.ControlLightLight;
-            label12.Location = new Point(729, 248);
+            label12.Location = new Point(875, 298);
+            label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(264, 38);
+            label12.Size = new Size(317, 46);
             label12.TabIndex = 23;
             label12.Text = "Phone";
             label12.TextAlign = ContentAlignment.MiddleCenter;
@@ -189,9 +198,10 @@
             // 
             label13.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label13.ForeColor = SystemColors.ControlLightLight;
-            label13.Location = new Point(729, 140);
+            label13.Location = new Point(875, 168);
+            label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(264, 38);
+            label13.Size = new Size(317, 46);
             label13.TabIndex = 22;
             label13.Text = "Email";
             label13.TextAlign = ContentAlignment.MiddleCenter;
@@ -199,9 +209,10 @@
             // PhoneRField
             // 
             PhoneRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            PhoneRField.Location = new Point(729, 288);
+            PhoneRField.Location = new Point(875, 346);
+            PhoneRField.Margin = new Padding(4, 4, 4, 4);
             PhoneRField.Name = "PhoneRField";
-            PhoneRField.Size = new Size(264, 63);
+            PhoneRField.Size = new Size(316, 72);
             PhoneRField.TabIndex = 21;
             PhoneRField.TextChanged += PhoneRField_TextChanged;
             PhoneRField.Enter += PhoneRField_Enter;
@@ -210,19 +221,21 @@
             // EmailRField
             // 
             EmailRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            EmailRField.Location = new Point(729, 182);
+            EmailRField.Location = new Point(875, 218);
+            EmailRField.Margin = new Padding(4, 4, 4, 4);
             EmailRField.Multiline = true;
             EmailRField.Name = "EmailRField";
-            EmailRField.Size = new Size(264, 64);
+            EmailRField.Size = new Size(316, 76);
             EmailRField.TabIndex = 20;
             // 
             // label6
             // 
             label6.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = SystemColors.ControlLightLight;
-            label6.Location = new Point(50, 463);
+            label6.Location = new Point(60, 556);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(442, 38);
+            label6.Size = new Size(530, 46);
             label6.TabIndex = 19;
             label6.Text = "Specialization";
             label6.TextAlign = ContentAlignment.MiddleCenter;
@@ -231,9 +244,10 @@
             // 
             label7.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = SystemColors.ControlLightLight;
-            label7.Location = new Point(391, 357);
+            label7.Location = new Point(469, 428);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(264, 38);
+            label7.Size = new Size(317, 46);
             label7.TabIndex = 18;
             label7.Text = "Birth day";
             label7.TextAlign = ContentAlignment.MiddleCenter;
@@ -241,9 +255,10 @@
             // SpecialRField
             // 
             SpecialRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            SpecialRField.Location = new Point(50, 505);
+            SpecialRField.Location = new Point(60, 606);
+            SpecialRField.Margin = new Padding(4, 4, 4, 4);
             SpecialRField.Name = "SpecialRField";
-            SpecialRField.Size = new Size(442, 63);
+            SpecialRField.Size = new Size(530, 72);
             SpecialRField.TabIndex = 17;
             SpecialRField.TextChanged += SpecialRField_TextChanged;
             SpecialRField.Enter += SpecialRField_Enter;
@@ -254,10 +269,11 @@
             // BirthRField
             // 
             BirthRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            BirthRField.Location = new Point(391, 397);
+            BirthRField.Location = new Point(469, 476);
+            BirthRField.Margin = new Padding(4, 4, 4, 4);
             BirthRField.Multiline = true;
             BirthRField.Name = "BirthRField";
-            BirthRField.Size = new Size(264, 64);
+            BirthRField.Size = new Size(316, 76);
             BirthRField.TabIndex = 16;
             BirthRField.Enter += BirthRField_Enter;
             BirthRField.Leave += BirthRField_Leave;
@@ -266,9 +282,10 @@
             // 
             label8.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = SystemColors.ControlLightLight;
-            label8.Location = new Point(391, 248);
+            label8.Location = new Point(469, 298);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(264, 38);
+            label8.Size = new Size(317, 46);
             label8.TabIndex = 15;
             label8.Text = "Surname";
             label8.TextAlign = ContentAlignment.MiddleCenter;
@@ -277,9 +294,10 @@
             // 
             label9.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = SystemColors.ControlLightLight;
-            label9.Location = new Point(391, 140);
+            label9.Location = new Point(469, 168);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(264, 38);
+            label9.Size = new Size(317, 46);
             label9.TabIndex = 14;
             label9.Text = "Name";
             label9.TextAlign = ContentAlignment.MiddleCenter;
@@ -287,18 +305,20 @@
             // SurnameRField
             // 
             SurnameRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            SurnameRField.Location = new Point(391, 288);
+            SurnameRField.Location = new Point(469, 346);
+            SurnameRField.Margin = new Padding(4, 4, 4, 4);
             SurnameRField.Name = "SurnameRField";
-            SurnameRField.Size = new Size(264, 63);
+            SurnameRField.Size = new Size(316, 72);
             SurnameRField.TabIndex = 13;
             // 
             // NameRField
             // 
             NameRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            NameRField.Location = new Point(391, 182);
+            NameRField.Location = new Point(469, 218);
+            NameRField.Margin = new Padding(4, 4, 4, 4);
             NameRField.Multiline = true;
             NameRField.Name = "NameRField";
-            NameRField.Size = new Size(264, 64);
+            NameRField.Size = new Size(316, 76);
             NameRField.TabIndex = 12;
             NameRField.TextChanged += NameRField_TextChanged;
             // 
@@ -306,9 +326,10 @@
             // 
             label4.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ControlLightLight;
-            label4.Location = new Point(387, 570);
+            label4.Location = new Point(464, 684);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(264, 38);
+            label4.Size = new Size(317, 46);
             label4.TabIndex = 11;
             label4.Text = "Role";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -317,9 +338,10 @@
             // 
             label5.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ControlLightLight;
-            label5.Location = new Point(50, 357);
+            label5.Location = new Point(60, 428);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(264, 38);
+            label5.Size = new Size(317, 46);
             label5.TabIndex = 10;
             label5.Text = "Repit Password";
             label5.TextAlign = ContentAlignment.MiddleCenter;
@@ -327,9 +349,10 @@
             // RoleRField
             // 
             RoleRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            RoleRField.Location = new Point(150, 618);
+            RoleRField.Location = new Point(180, 742);
+            RoleRField.Margin = new Padding(4, 4, 4, 4);
             RoleRField.Name = "RoleRField";
-            RoleRField.Size = new Size(770, 63);
+            RoleRField.Size = new Size(923, 72);
             RoleRField.TabIndex = 9;
             RoleRField.Enter += RoleRField_Enter;
             RoleRField.Leave += RoleRField_Leave;
@@ -337,9 +360,10 @@
             // RePassRField
             // 
             RePassRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            RePassRField.Location = new Point(50, 397);
+            RePassRField.Location = new Point(60, 476);
+            RePassRField.Margin = new Padding(4, 4, 4, 4);
             RePassRField.Name = "RePassRField";
-            RePassRField.Size = new Size(264, 63);
+            RePassRField.Size = new Size(316, 72);
             RePassRField.TabIndex = 8;
             RePassRField.UseSystemPasswordChar = true;
             // 
@@ -347,9 +371,10 @@
             // 
             label3.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(50, 248);
+            label3.Location = new Point(60, 298);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(264, 38);
+            label3.Size = new Size(317, 46);
             label3.TabIndex = 7;
             label3.Text = "Password";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -358,9 +383,10 @@
             // 
             label2.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(50, 140);
+            label2.Location = new Point(60, 168);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(264, 38);
+            label2.Size = new Size(317, 46);
             label2.TabIndex = 6;
             label2.Text = "Login";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -376,9 +402,10 @@
             Registration.FlatStyle = FlatStyle.Flat;
             Registration.Font = new Font("Times New Roman", 26F, FontStyle.Regular, GraphicsUnit.Point);
             Registration.ForeColor = Color.White;
-            Registration.Location = new Point(356, 710);
+            Registration.Location = new Point(427, 852);
+            Registration.Margin = new Padding(4, 4, 4, 4);
             Registration.Name = "Registration";
-            Registration.Size = new Size(334, 82);
+            Registration.Size = new Size(401, 98);
             Registration.TabIndex = 5;
             Registration.Text = "Regestration";
             Registration.UseVisualStyleBackColor = false;
@@ -389,19 +416,21 @@
             // PassRField
             // 
             PassRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            PassRField.Location = new Point(50, 288);
+            PassRField.Location = new Point(60, 346);
+            PassRField.Margin = new Padding(4, 4, 4, 4);
             PassRField.Name = "PassRField";
-            PassRField.Size = new Size(264, 63);
+            PassRField.Size = new Size(316, 72);
             PassRField.TabIndex = 3;
             PassRField.UseSystemPasswordChar = true;
             // 
             // LoginRField
             // 
             LoginRField.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            LoginRField.Location = new Point(50, 182);
+            LoginRField.Location = new Point(60, 218);
+            LoginRField.Margin = new Padding(4, 4, 4, 4);
             LoginRField.Multiline = true;
             LoginRField.Name = "LoginRField";
-            LoginRField.Size = new Size(264, 64);
+            LoginRField.Size = new Size(316, 76);
             LoginRField.TabIndex = 1;
             // 
             // panel2
@@ -411,8 +440,9 @@
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(4, 4, 4, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1059, 112);
+            panel2.Size = new Size(1271, 134);
             panel2.TabIndex = 0;
             // 
             // closeButton
@@ -421,9 +451,10 @@
             closeButton.Cursor = Cursors.Hand;
             closeButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(1001, 8);
+            closeButton.Location = new Point(1201, 10);
+            closeButton.Margin = new Padding(4, 0, 4, 0);
             closeButton.Name = "closeButton";
-            closeButton.Size = new Size(44, 41);
+            closeButton.Size = new Size(50, 48);
             closeButton.TabIndex = 1;
             closeButton.Text = "X";
             closeButton.Click += closeButton_Click;
@@ -439,11 +470,12 @@
             // 
             // RegForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1059, 896);
+            ClientSize = new Size(1271, 1075);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 4, 4, 4);
             Name = "RegForm";
             Text = "RegForm";
             panel1.ResumeLayout(false);

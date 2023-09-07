@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            dataGridView2 = new DataGridView();
+            DoctorName2 = new DataGridViewTextBoxColumn();
+            DoctorSurname2 = new DataGridViewTextBoxColumn();
+            DSpecialization2 = new DataGridViewTextBoxColumn();
+            MeetingDate2 = new DataGridViewTextBoxColumn();
+            Referal = new DataGridViewTextBoxColumn();
             dataGridView1 = new DataGridView();
             DoctorName1 = new DataGridViewTextBoxColumn();
             DoctorSurname1 = new DataGridViewTextBoxColumn();
@@ -51,17 +57,11 @@
             panel2 = new Panel();
             closeButton = new Label();
             label1 = new Label();
-            dataGridView2 = new DataGridView();
-            DoctorName2 = new DataGridViewTextBoxColumn();
-            DoctorSurname2 = new DataGridViewTextBoxColumn();
-            DSpecialization2 = new DataGridViewTextBoxColumn();
-            MeetingDate2 = new DataGridViewTextBoxColumn();
-            Referal = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ConsultationGridView).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -83,6 +83,51 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(2253, 800);
             panel1.TabIndex = 1;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { DoctorName2, DoctorSurname2, DSpecialization2, MeetingDate2, Referal });
+            dataGridView2.Location = new Point(1762, 164);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 72;
+            dataGridView2.Size = new Size(420, 262);
+            dataGridView2.TabIndex = 38;
+            // 
+            // DoctorName2
+            // 
+            DoctorName2.HeaderText = "Dname";
+            DoctorName2.MinimumWidth = 9;
+            DoctorName2.Name = "DoctorName2";
+            DoctorName2.Width = 175;
+            // 
+            // DoctorSurname2
+            // 
+            DoctorSurname2.HeaderText = "DSurname";
+            DoctorSurname2.MinimumWidth = 9;
+            DoctorSurname2.Name = "DoctorSurname2";
+            DoctorSurname2.Width = 175;
+            // 
+            // DSpecialization2
+            // 
+            DSpecialization2.HeaderText = "DSpecialization";
+            DSpecialization2.MinimumWidth = 9;
+            DSpecialization2.Name = "DSpecialization2";
+            DSpecialization2.Width = 175;
+            // 
+            // MeetingDate2
+            // 
+            MeetingDate2.HeaderText = "MeetingDate ";
+            MeetingDate2.MinimumWidth = 9;
+            MeetingDate2.Name = "MeetingDate2";
+            MeetingDate2.Width = 175;
+            // 
+            // Referal
+            // 
+            Referal.HeaderText = "Referal";
+            Referal.MinimumWidth = 9;
+            Referal.Name = "Referal";
+            Referal.Width = 175;
             // 
             // dataGridView1
             // 
@@ -261,7 +306,7 @@
             closeButton.Cursor = Cursors.Hand;
             closeButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(907, 0);
+            closeButton.Location = new Point(2203, 0);
             closeButton.Margin = new Padding(4, 0, 4, 0);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(50, 48);
@@ -279,53 +324,8 @@
             label1.Name = "label1";
             label1.Size = new Size(2253, 134);
             label1.TabIndex = 0;
-            label1.Text = "Log In";
+            label1.Text = "Pathient office";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { DoctorName2, DoctorSurname2, DSpecialization2, MeetingDate2, Referal });
-            dataGridView2.Location = new Point(1762, 164);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 72;
-            dataGridView2.Size = new Size(420, 262);
-            dataGridView2.TabIndex = 38;
-            // 
-            // DoctorName2
-            // 
-            DoctorName2.HeaderText = "Dname";
-            DoctorName2.MinimumWidth = 9;
-            DoctorName2.Name = "DoctorName2";
-            DoctorName2.Width = 175;
-            // 
-            // DoctorSurname2
-            // 
-            DoctorSurname2.HeaderText = "DSurname";
-            DoctorSurname2.MinimumWidth = 9;
-            DoctorSurname2.Name = "DoctorSurname2";
-            DoctorSurname2.Width = 175;
-            // 
-            // DSpecialization2
-            // 
-            DSpecialization2.HeaderText = "DSpecialization";
-            DSpecialization2.MinimumWidth = 9;
-            DSpecialization2.Name = "DSpecialization2";
-            DSpecialization2.Width = 175;
-            // 
-            // MeetingDate2
-            // 
-            MeetingDate2.HeaderText = "MeetingDate ";
-            MeetingDate2.MinimumWidth = 9;
-            MeetingDate2.Name = "MeetingDate2";
-            MeetingDate2.Width = 175;
-            // 
-            // Referal
-            // 
-            Referal.HeaderText = "Referal";
-            Referal.MinimumWidth = 9;
-            Referal.Name = "Referal";
-            Referal.Width = 175;
             // 
             // PatientForm
             // 
@@ -338,11 +338,11 @@
             Text = "PatientForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)ConsultationGridView).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
