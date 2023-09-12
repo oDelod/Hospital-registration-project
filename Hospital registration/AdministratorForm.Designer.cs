@@ -490,7 +490,7 @@
             label1.Name = "label1";
             label1.Size = new Size(2087, 134);
             label1.TabIndex = 0;
-            label1.Text = "Assistant office";
+            label1.Text = "Administrator office";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // dataGridView1
