@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
-using System.Globalization; // Додали для CultureInfo
+using System.Globalization; 
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -155,7 +155,7 @@ namespace Hospital_registration
 
         private void Registration_Click(object sender, EventArgs e)
         {
-            string phoneNumber = PhoneRField.Text.Replace("x", ""); // Видаляємо "x" з номеру
+            string phoneNumber = PhoneRField.Text.Replace("x", ""); 
             if (phoneNumber.Length != 9 || !phoneNumber.All(char.IsDigit))
             {
                 MessageBox.Show("Phone number should contain exactly 9 digits.");

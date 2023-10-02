@@ -98,11 +98,11 @@ namespace Hospital_registration
                 {
                     if (userRole == "Patient")
                     {
-                        loggedInUserId = Convert.ToInt32(row["UID"]); // Зберігаємо UID пацієнта
+                        loggedInUserId = Convert.ToInt32(row["UID"]); 
                     }
                     else
                     {
-                        loggedInUserIdOtherRoles = Convert.ToInt32(row["UID"]); // Зберігаємо UID користувачів інших ролей
+                        loggedInUserIdOtherRoles = Convert.ToInt32(row["UID"]); 
                     }
                     switch (userRole)
                     {
@@ -120,7 +120,7 @@ namespace Hospital_registration
                             assistantForm.Show();
                             break;
                         case "Administrator":
-                            AdministratorForm adminForm = new AdministratorForm();
+                            AdministratorForm adminForm = new AdministratorForm(loggedInUserIdOtherRoles);
                             adminForm.Show();
                             break;
                         default:

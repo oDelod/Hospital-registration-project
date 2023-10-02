@@ -100,18 +100,18 @@
             label1.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlLightLight;
             label1.Location = new Point(0, 0);
-            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(2239, 134);
+            label1.Size = new Size(1493, 89);
             label1.TabIndex = 0;
             label1.Text = "Assistant office";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // SaveInformation
             // 
-            SaveInformation.Location = new Point(234, 532);
+            SaveInformation.Location = new Point(156, 355);
+            SaveInformation.Margin = new Padding(2);
             SaveInformation.Name = "SaveInformation";
-            SaveInformation.Size = new Size(271, 40);
+            SaveInformation.Size = new Size(181, 27);
             SaveInformation.TabIndex = 35;
             SaveInformation.Text = "Save Information";
             SaveInformation.UseVisualStyleBackColor = true;
@@ -119,51 +119,48 @@
             // 
             // Information
             // 
-            Information.Location = new Point(271, 491);
+            Information.Location = new Point(181, 327);
+            Information.Margin = new Padding(2);
             Information.Name = "Information";
-            Information.Size = new Size(175, 35);
+            Information.Size = new Size(118, 27);
             Information.TabIndex = 34;
             // 
             // Hours
             // 
             Hours.FormattingEnabled = true;
-            Hours.ItemHeight = 30;
-            Hours.Location = new Point(380, 337);
-            Hours.Margin = new Padding(4);
+            Hours.ItemHeight = 20;
+            Hours.Location = new Point(253, 225);
             Hours.Name = "Hours";
-            Hours.Size = new Size(215, 154);
+            Hours.Size = new Size(145, 104);
             Hours.TabIndex = 33;
             // 
             // Day
             // 
             Day.FormattingEnabled = true;
-            Day.ItemHeight = 30;
-            Day.Location = new Point(125, 337);
-            Day.Margin = new Padding(4);
+            Day.ItemHeight = 20;
+            Day.Location = new Point(83, 225);
             Day.Name = "Day";
-            Day.Size = new Size(215, 154);
+            Day.Size = new Size(145, 104);
             Day.TabIndex = 32;
             Day.SelectedIndexChanged += Day_SelectedIndexChanged_1;
             // 
             // doctorsListBox
             // 
             doctorsListBox.FormattingEnabled = true;
-            doctorsListBox.ItemHeight = 30;
-            doctorsListBox.Location = new Point(380, 175);
-            doctorsListBox.Margin = new Padding(4);
+            doctorsListBox.ItemHeight = 20;
+            doctorsListBox.Location = new Point(253, 117);
             doctorsListBox.Name = "doctorsListBox";
-            doctorsListBox.Size = new Size(215, 154);
+            doctorsListBox.Size = new Size(145, 104);
             doctorsListBox.TabIndex = 31;
             doctorsListBox.SelectedIndexChanged += doctorsListBox_SelectedIndexChanged_1;
             // 
             // specialListBox
             // 
             specialListBox.FormattingEnabled = true;
-            specialListBox.ItemHeight = 30;
-            specialListBox.Location = new Point(125, 175);
-            specialListBox.Margin = new Padding(4);
+            specialListBox.ItemHeight = 20;
+            specialListBox.Location = new Point(83, 117);
             specialListBox.Name = "specialListBox";
-            specialListBox.Size = new Size(215, 154);
+            specialListBox.Size = new Size(145, 104);
             specialListBox.TabIndex = 36;
             specialListBox.SelectedIndexChanged += specialListBox_SelectedIndexChanged;
             // 
@@ -174,9 +171,8 @@
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2239, 134);
+            panel2.Size = new Size(1493, 89);
             panel2.TabIndex = 0;
             // 
             // closeButton
@@ -185,12 +181,12 @@
             closeButton.Cursor = Cursors.Hand;
             closeButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(2185, 0);
-            closeButton.Margin = new Padding(4, 0, 4, 0);
+            closeButton.Location = new Point(1457, 0);
             closeButton.Name = "closeButton";
-            closeButton.Size = new Size(50, 48);
+            closeButton.Size = new Size(37, 34);
             closeButton.TabIndex = 1;
             closeButton.Text = "X";
+            closeButton.Click += closeButton_Click_1;
             // 
             // panel1
             // 
@@ -224,21 +220,21 @@
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2239, 1404);
+            panel1.Size = new Size(1493, 936);
             panel1.TabIndex = 2;
             // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { IID, Birth, INAME, ISURNAME, ITAME, IDAY });
-            dataGridView2.Location = new Point(1330, 774);
+            dataGridView2.Location = new Point(887, 516);
+            dataGridView2.Margin = new Padding(2);
             dataGridView2.MultiSelect = false;
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 72;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.Size = new Size(598, 161);
+            dataGridView2.Size = new Size(399, 107);
             dataGridView2.TabIndex = 57;
             dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
@@ -288,45 +284,50 @@
             // 
             // ConsulionTextBox
             // 
-            ConsulionTextBox.Location = new Point(1302, 585);
+            ConsulionTextBox.Location = new Point(868, 390);
+            ConsulionTextBox.Margin = new Padding(2);
             ConsulionTextBox.Multiline = true;
             ConsulionTextBox.Name = "ConsulionTextBox";
-            ConsulionTextBox.Size = new Size(656, 61);
+            ConsulionTextBox.Size = new Size(439, 42);
             ConsulionTextBox.TabIndex = 56;
             // 
             // MedicineText
             // 
             MedicineText.AutoSize = true;
-            MedicineText.Location = new Point(1470, 326);
+            MedicineText.Location = new Point(980, 217);
+            MedicineText.Margin = new Padding(2, 0, 2, 0);
             MedicineText.Name = "MedicineText";
-            MedicineText.Size = new Size(98, 30);
+            MedicineText.Size = new Size(70, 20);
             MedicineText.TabIndex = 55;
             MedicineText.Text = "Medicine";
             // 
             // ReferalText
             // 
             ReferalText.AutoSize = true;
-            ReferalText.Location = new Point(1470, 425);
+            ReferalText.Location = new Point(980, 283);
+            ReferalText.Margin = new Padding(2, 0, 2, 0);
             ReferalText.Name = "ReferalText";
-            ReferalText.Size = new Size(77, 30);
+            ReferalText.Size = new Size(56, 20);
             ReferalText.TabIndex = 54;
             ReferalText.Text = "Referal";
             // 
             // ConclusionText
             // 
             ConclusionText.AutoSize = true;
-            ConclusionText.Location = new Point(1470, 534);
+            ConclusionText.Location = new Point(980, 356);
+            ConclusionText.Margin = new Padding(2, 0, 2, 0);
             ConclusionText.Name = "ConclusionText";
-            ConclusionText.Size = new Size(115, 30);
+            ConclusionText.Size = new Size(81, 20);
             ConclusionText.TabIndex = 53;
             ConclusionText.Text = "Conclusion";
             // 
             // DescriptionText
             // 
             DescriptionText.AutoSize = true;
-            DescriptionText.Location = new Point(1467, 215);
+            DescriptionText.Location = new Point(978, 143);
+            DescriptionText.Margin = new Padding(2, 0, 2, 0);
             DescriptionText.Name = "DescriptionText";
-            DescriptionText.Size = new Size(118, 30);
+            DescriptionText.Size = new Size(85, 20);
             DescriptionText.TabIndex = 52;
             DescriptionText.Text = "Description";
             // 
@@ -341,10 +342,9 @@
             SaveButton.FlatStyle = FlatStyle.Flat;
             SaveButton.Font = new Font("Times New Roman", 20.1428585F, FontStyle.Regular, GraphicsUnit.Point);
             SaveButton.ForeColor = Color.White;
-            SaveButton.Location = new Point(1437, 683);
-            SaveButton.Margin = new Padding(4);
+            SaveButton.Location = new Point(958, 455);
             SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(401, 84);
+            SaveButton.Size = new Size(267, 56);
             SaveButton.TabIndex = 50;
             SaveButton.Text = "Save";
             SaveButton.UseVisualStyleBackColor = false;
@@ -352,35 +352,39 @@
             // 
             // ReferalTextBox
             // 
-            ReferalTextBox.Location = new Point(1302, 470);
+            ReferalTextBox.Location = new Point(868, 313);
+            ReferalTextBox.Margin = new Padding(2);
             ReferalTextBox.Multiline = true;
             ReferalTextBox.Name = "ReferalTextBox";
-            ReferalTextBox.Size = new Size(656, 61);
+            ReferalTextBox.Size = new Size(439, 42);
             ReferalTextBox.TabIndex = 49;
             // 
             // MedecineTextBox
             // 
-            MedecineTextBox.Location = new Point(1302, 361);
+            MedecineTextBox.Location = new Point(868, 241);
+            MedecineTextBox.Margin = new Padding(2);
             MedecineTextBox.Multiline = true;
             MedecineTextBox.Name = "MedecineTextBox";
-            MedecineTextBox.Size = new Size(656, 61);
+            MedecineTextBox.Size = new Size(439, 42);
             MedecineTextBox.TabIndex = 48;
             // 
             // ConsultationTextBox
             // 
-            ConsultationTextBox.Location = new Point(1302, 262);
+            ConsultationTextBox.Location = new Point(868, 175);
+            ConsultationTextBox.Margin = new Padding(2);
             ConsultationTextBox.Multiline = true;
             ConsultationTextBox.Name = "ConsultationTextBox";
-            ConsultationTextBox.Size = new Size(656, 61);
+            ConsultationTextBox.Size = new Size(439, 42);
             ConsultationTextBox.TabIndex = 47;
             // 
             // recordTypeComboBox
             // 
             recordTypeComboBox.FormattingEnabled = true;
             recordTypeComboBox.Items.AddRange(new object[] { "Consultation", "Referal", "Medecine" });
-            recordTypeComboBox.Location = new Point(1470, 174);
+            recordTypeComboBox.Location = new Point(980, 116);
+            recordTypeComboBox.Margin = new Padding(2);
             recordTypeComboBox.Name = "recordTypeComboBox";
-            recordTypeComboBox.Size = new Size(212, 38);
+            recordTypeComboBox.Size = new Size(143, 28);
             recordTypeComboBox.TabIndex = 46;
             recordTypeComboBox.SelectedIndexChanged += recordTypeComboBox_SelectedIndexChanged;
             // 
@@ -388,12 +392,13 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CofuId, TuName, TuSurname, TuHour, TuDay, TuInformation });
-            dataGridView1.Location = new Point(103, 1119);
+            dataGridView1.Location = new Point(69, 746);
+            dataGridView1.Margin = new Padding(2);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 72;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(598, 161);
+            dataGridView1.Size = new Size(399, 107);
             dataGridView1.TabIndex = 45;
             // 
             // CofuId
@@ -444,12 +449,13 @@
             // 
             dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAppointments.Columns.AddRange(new DataGridViewColumn[] { CofId, TName, TSurname, THour, TDay, TInformation, TAcceptStatus });
-            dataGridViewAppointments.Location = new Point(103, 918);
+            dataGridViewAppointments.Location = new Point(69, 612);
+            dataGridViewAppointments.Margin = new Padding(2);
             dataGridViewAppointments.MultiSelect = false;
             dataGridViewAppointments.Name = "dataGridViewAppointments";
             dataGridViewAppointments.RowHeadersWidth = 72;
             dataGridViewAppointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewAppointments.Size = new Size(598, 161);
+            dataGridViewAppointments.Size = new Size(399, 107);
             dataGridViewAppointments.TabIndex = 44;
             dataGridViewAppointments.CellContentClick += dataGridViewAppointments_CellContentClick;
             // 
@@ -516,10 +522,9 @@
             btnSaveWorkingHours.FlatStyle = FlatStyle.Flat;
             btnSaveWorkingHours.Font = new Font("Times New Roman", 20.1428585F, FontStyle.Regular, GraphicsUnit.Point);
             btnSaveWorkingHours.ForeColor = Color.White;
-            btnSaveWorkingHours.Location = new Point(380, 814);
-            btnSaveWorkingHours.Margin = new Padding(4);
+            btnSaveWorkingHours.Location = new Point(281, 540);
             btnSaveWorkingHours.Name = "btnSaveWorkingHours";
-            btnSaveWorkingHours.Size = new Size(401, 84);
+            btnSaveWorkingHours.Size = new Size(267, 56);
             btnSaveWorkingHours.TabIndex = 43;
             btnSaveWorkingHours.Text = "SaveWorkingHours";
             btnSaveWorkingHours.UseVisualStyleBackColor = false;
@@ -528,26 +533,26 @@
             // WorkHListBox1
             // 
             WorkHListBox1.FormattingEnabled = true;
-            WorkHListBox1.Location = new Point(422, 621);
-            WorkHListBox1.Margin = new Padding(4);
+            WorkHListBox1.Location = new Point(281, 414);
             WorkHListBox1.Name = "WorkHListBox1";
-            WorkHListBox1.Size = new Size(215, 164);
+            WorkHListBox1.Size = new Size(145, 92);
             WorkHListBox1.TabIndex = 42;
             WorkHListBox1.ItemCheck += WorkHListBox1_ItemCheck;
             // 
             // monthCalendar1
             // 
-            monthCalendar1.Location = new Point(103, 597);
-            monthCalendar1.Margin = new Padding(11);
+            monthCalendar1.Location = new Point(69, 398);
+            monthCalendar1.Margin = new Padding(7);
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.ShowToday = false;
             monthCalendar1.TabIndex = 41;
             // 
             // textBoxSearchdoctor
             // 
-            textBoxSearchdoctor.Location = new Point(760, 165);
+            textBoxSearchdoctor.Location = new Point(507, 110);
+            textBoxSearchdoctor.Margin = new Padding(2);
             textBoxSearchdoctor.Name = "textBoxSearchdoctor";
-            textBoxSearchdoctor.Size = new Size(175, 35);
+            textBoxSearchdoctor.Size = new Size(118, 27);
             textBoxSearchdoctor.TabIndex = 40;
             textBoxSearchdoctor.TextChanged += textBoxSearchdoctor_TextChanged;
             // 
@@ -555,10 +560,11 @@
             // 
             dataGridViewDoctor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDoctor.Columns.AddRange(new DataGridViewColumn[] { PUID, PName, PSurname, PLogin });
-            dataGridViewDoctor.Location = new Point(651, 206);
+            dataGridViewDoctor.Location = new Point(434, 137);
+            dataGridViewDoctor.Margin = new Padding(2);
             dataGridViewDoctor.Name = "dataGridViewDoctor";
             dataGridViewDoctor.RowHeadersWidth = 72;
-            dataGridViewDoctor.Size = new Size(420, 262);
+            dataGridViewDoctor.Size = new Size(280, 175);
             dataGridViewDoctor.TabIndex = 39;
             dataGridViewDoctor.CellClick += dataGridViewDoctor_CellClick;
             // 
@@ -592,9 +598,10 @@
             // 
             // textBoxSearchpathient
             // 
-            textBoxSearchpathient.Location = new Point(750, 474);
+            textBoxSearchpathient.Location = new Point(500, 316);
+            textBoxSearchpathient.Margin = new Padding(2);
             textBoxSearchpathient.Name = "textBoxSearchpathient";
-            textBoxSearchpathient.Size = new Size(175, 35);
+            textBoxSearchpathient.Size = new Size(118, 27);
             textBoxSearchpathient.TabIndex = 38;
             textBoxSearchpathient.TextChanged += textBoxSearchpathient_TextChanged;
             // 
@@ -602,10 +609,11 @@
             // 
             dataGridViewPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPatients.Columns.AddRange(new DataGridViewColumn[] { UID1, Name1, Surname1, Login1 });
-            dataGridViewPatients.Location = new Point(641, 518);
+            dataGridViewPatients.Location = new Point(427, 345);
+            dataGridViewPatients.Margin = new Padding(2);
             dataGridViewPatients.Name = "dataGridViewPatients";
             dataGridViewPatients.RowHeadersWidth = 72;
-            dataGridViewPatients.Size = new Size(420, 262);
+            dataGridViewPatients.Size = new Size(280, 175);
             dataGridViewPatients.TabIndex = 37;
             dataGridViewPatients.CellClick += dataGridViewPatients_CellClick;
             dataGridViewPatients.CellContentClick += dataGridViewPatients_CellContentClick;
@@ -640,10 +648,11 @@
             // 
             // AssistantForm
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2239, 1404);
+            ClientSize = new Size(1493, 936);
             Controls.Add(panel1);
+            Margin = new Padding(2);
             Name = "AssistantForm";
             Text = "AssistantForm";
             panel2.ResumeLayout(false);

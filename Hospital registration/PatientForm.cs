@@ -24,7 +24,7 @@ namespace Hospital_registration
             InitializeComponent();
             LoadSpecialties();
             this.loggedInUserId = loggedInUserId;
-            MessageBox.Show(loggedInUserId.ToString());
+          
             FillDataGridView();
             FillDataGridViewMed();
             FillDataGrivRef();
@@ -102,10 +102,9 @@ namespace Hospital_registration
             {
                 int selectedIndex = doctorsListBox.SelectedIndex;
                 int selectedDoctorId = doctorIdDictionary[selectedIndex];
-                // MessageBox.Show($"Selected Doctor ID: {selectedDoctorId}");
+             
                 LoadDoctorAvailability(selectedDoctorId);
-                // Викликати метод чи робити інші дії зі знайденим ID лікаря
-                // Наприклад: LoadDoctorAvailability(selectedDoctorId);
+            ;
             }
         }
 
@@ -119,7 +118,7 @@ namespace Hospital_registration
                 string selectedDayStr = Day.SelectedItem.ToString();
                 DateTime selectedDay = DateTime.ParseExact(selectedDayStr, "dd/MM/yyyy", null);
 
-                // Викликати метод для завантаження доступних годин для обраного дня і лікаря
+             
                 LoadAvailableHours(selectedDoctorId, selectedDay);
             }
         }
@@ -162,18 +161,16 @@ namespace Hospital_registration
                 string selectedTime = Hours.SelectedItem.ToString();
                 string information = Information.Text;
 
-                // Отримати ідентифікатор пацієнта, наприклад, із якось іншого джерела або зберегти його у змінній
-                int patientId = loggedInUserId;  // Вам потрібно реалізувати цю функцію
+                int patientId = loggedInUserId;  
 
                 string message = $"Doctor ID: {selectedDoctorId}\nDay: {selectedDayStr}\nHours: {selectedTime}\nPatient ID: {patientId}\nInformation: {information}";
                 MessageBox.Show(message);
 
-                // Викликати метод для оновлення запису із відповідними даними
                 UpdateAppointmentWithPatientId(selectedDoctorId, selectedDay, selectedTime, information, patientId);
             }
             else
             {
-                MessageBox.Show("Будь ласка, заповніть всі поля перед збереженням.");
+                MessageBox.Show("Please fill in all fields before saving.");
             }
         }
         private void UpdateAppointmentWithPatientId(int doctorId, DateTime selectedDay, string selectedTime, string information, int patientId)
@@ -198,17 +195,17 @@ namespace Hospital_registration
                     int rowsAffected = updateCommand.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Запис пацієнта збережено.");
-                        // Додайте оновлення списку доступних записів лікаря
+                        MessageBox.Show("The patient record has been saved.");
+
                     }
                     else
                     {
-                        MessageBox.Show("Помилка при оновленні запису.");
+                        MessageBox.Show("Error updating the record.");
                     }
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Помилка при оновленні запису: " + ex.Message);
+                    MessageBox.Show("Error updating the record: " + ex.Message);
                 }
 
                 db.closeConnection();
@@ -247,7 +244,7 @@ namespace Hospital_registration
 
         private void FillDataGridView()
         {
-            int patientId = loggedInUserId; // Замініть це на ідентифікатор вашого пацієнта
+            int patientId = loggedInUserId; 
 
             using (DB db = new DB())
             {
@@ -270,8 +267,8 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-                // Встановлюємо DataTable як DataSource для DataGridView
-                ConsultationGridView.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+                
+                ConsultationGridView.Rows.Clear(); 
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     int rowIndex = ConsultationGridView.Rows.Add();
@@ -283,11 +280,11 @@ namespace Hospital_registration
                     dataGridViewRow.Cells["Description"].Value = dataRow["Description"];
 
 
-                    dataGridViewRow.Cells["Conclusion"].Value = dataRow["Conclusion"]; // Приховане значення "ID"
+                    dataGridViewRow.Cells["Conclusion"].Value = dataRow["Conclusion"]; 
                 }
             }
 
-            // Оновити DataGridView
+         
             ConsultationGridView.Update();
             ConsultationGridView.Refresh();
 
@@ -300,7 +297,7 @@ namespace Hospital_registration
         }
         private void FillDataGridViewMed()
         {
-            int patientId = loggedInUserId; // Замініть це на ідентифікатор вашого пацієнта
+            int patientId = loggedInUserId; 
 
             using (DB db = new DB())
             {
@@ -322,8 +319,8 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-                // Встановлюємо DataTable як DataSource для DataGridView
-                dataGridView1.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+               
+                dataGridView1.Rows.Clear(); 
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     int rowIndex = dataGridView1.Rows.Add();
@@ -339,7 +336,7 @@ namespace Hospital_registration
                 }
             }
 
-            // Оновити DataGridView
+       
             dataGridView1.Update();
             dataGridView1.Refresh();
 
@@ -349,7 +346,7 @@ namespace Hospital_registration
 
         private void FillDataGrivRef()
         {
-            int patientId = loggedInUserId; // Замініть це на ідентифікатор вашого пацієнта
+            int patientId = loggedInUserId; 
 
             using (DB db = new DB())
             {
@@ -371,8 +368,8 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-                // Встановлюємо DataTable як DataSource для DataGridView
-                dataGridView2.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+               
+                dataGridView2.Rows.Clear(); 
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     int rowIndex = dataGridView2.Rows.Add();
@@ -388,7 +385,7 @@ namespace Hospital_registration
                 }
             }
 
-            // Оновити DataGridView
+            
             dataGridView2.Update();
             dataGridView2.Refresh();
 

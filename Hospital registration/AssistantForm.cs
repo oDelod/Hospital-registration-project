@@ -32,10 +32,10 @@ namespace Hospital_registration
             LoadSpecialties();
             this.loggedInUserIdOtherRoles = loggedInUserIdOtherRoles;
             this.loggedInUserId = loggedInUserIdOtherRoles;
-            MessageBox.Show(loggedInUserId.ToString());
+           
             PathientList();
             DoctorList();
-            InitializeHoursList(); // Виклик методу для заповнення годин
+            InitializeHoursList(); 
             recordTypeComboBox.SelectedItem = "Consultation";
 
 
@@ -114,10 +114,9 @@ namespace Hospital_registration
                 {
                     int selectedIndex = doctorsListBox.SelectedIndex;
                     int selectedDoctorId = doctorIdDictionary[selectedIndex];
-                    // MessageBox.Show($"Selected Doctor ID: {selectedDoctorId}");
+                   MessageBox.Show($"Selected Doctor ID: {selectedDoctorId}");
                     LoadDoctorAvailability(selectedDoctorId);
-                    // Викликати метод чи робити інші дії зі знайденим ID лікаря
-                    // Наприклад: LoadDoctorAvailability(selectedDoctorId);
+                
 
                 }
             }
@@ -133,7 +132,6 @@ namespace Hospital_registration
                     string selectedDayStr = Day.SelectedItem.ToString();
                     DateTime selectedDay = DateTime.ParseExact(selectedDayStr, "dd/MM/yyyy", null);
 
-                    // Викликати метод для завантаження доступних годин для обраного дня і лікаря
                     LoadAvailableHours(selectedDoctorId, selectedDay);
                 }
             }
@@ -199,17 +197,16 @@ namespace Hospital_registration
                     int rowsAffected = updateCommand.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Запис пацієнта збережено.");
-                        // Додайте оновлення списку доступних записів лікаря
+                        MessageBox.Show("The patient's record has been saved.");
                     }
                     else
                     {
-                        MessageBox.Show("Помилка при оновленні запису.");
+                        MessageBox.Show("Error updating the record.");
                     }
                 }
                 catch (MySqlException ex)
                 {
-                    MessageBox.Show("Помилка при оновленні запису: " + ex.Message);
+                    MessageBox.Show("Error updating the record: " + ex.Message);
                 }
 
                 db.closeConnection();
@@ -278,9 +275,9 @@ namespace Hospital_registration
                 MySqlCommand command = new MySqlCommand(query, db.GetConnection());
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                adapter.Fill(patientDataTable); // Заповнити DataTable
+                adapter.Fill(patientDataTable); 
 
-                // Очищаємо дані в DataGridView перед заповненням
+    
                 dataGridViewPatients.Rows.Clear();
 
                 foreach (DataRow dataRow in patientDataTable.Rows)
@@ -293,7 +290,6 @@ namespace Hospital_registration
                     dataGridViewRow.Cells["Login1"].Value = dataRow["Login"];
                 }
 
-                // Оновити DataGridView
                 dataGridViewPatients.Update();
                 dataGridViewPatients.Refresh();
             }
@@ -309,17 +305,17 @@ namespace Hospital_registration
         {
             if (e.RowIndex >= 0)
             {
-                // Отримуємо ідентифікатор пацієнта з виділеного рядка
+              
                 DataGridViewRow selectedRow = dataGridViewPatients.Rows[e.RowIndex];
                 int patientId = Convert.ToInt32(selectedRow.Cells["UID1"].Value);
                 string patientLogin = selectedRow.Cells["Login1"].Value.ToString();
 
-                // Зберігаємо ідентифікатор пацієнта
+               
                 selectedPatientId = patientId;
 
-                // Виводимо повідомлення MessageBox
-                string message = $"Ідентифікатор пацієнта: {patientId}\nЛогін пацієнта: {patientLogin}";
-                MessageBox.Show(message, "Інформація про пацієнта");
+            
+                string message = $"Patient identifier: {patientId}\nPatient login: {patientLogin}";
+                MessageBox.Show(message, "Patient information");
             }
 
         }
@@ -343,17 +339,17 @@ namespace Hospital_registration
         {
             if (e.RowIndex >= 0)
             {
-                // Отримуємо ідентифікатор пацієнта з виділеного рядка
+          
                 DataGridViewRow selectedRow = dataGridViewDoctor.Rows[e.RowIndex];
                 int doctorId = Convert.ToInt32(selectedRow.Cells["PUID"].Value);
                 string doctorLogin = selectedRow.Cells["PLogin"].Value.ToString();
 
-                // Зберігаємо ідентифікатор пацієнта
+               
                 selectedDoctorId = doctorId;
 
-                // Виводимо повідомлення MessageBox
-                string message = $"Ідентифікатор лікаря: {doctorId}\nЛогін пацієнта: {doctorLogin}";
-                MessageBox.Show(message, "Інформація про пацієнта");
+               
+                string message = $"Doctor identifier: {doctorId}\nPatient login: {doctorLogin}";
+                MessageBox.Show(message, "Patient information");
                 LoadDoctorAvailability(selectedDoctorId);
                 LoadApprovedAppointments();
                 LoadUnapprovedAppointments();
@@ -372,9 +368,9 @@ namespace Hospital_registration
                 MySqlCommand command = new MySqlCommand(query, db.GetConnection());
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                adapter.Fill(patientDataTable); // Заповнити DataTable
+                adapter.Fill(patientDataTable); 
 
-                // Очищаємо дані в DataGridView перед заповненням
+               
                 dataGridViewDoctor.Rows.Clear();
 
                 foreach (DataRow dataRow in patientDataTable.Rows)
@@ -387,7 +383,6 @@ namespace Hospital_registration
                     dataGridViewRow.Cells["PLogin"].Value = dataRow["Login"];
                 }
 
-                // Оновити DataGridView
                 dataGridViewDoctor.Update();
                 dataGridViewDoctor.Refresh();
             }
@@ -405,22 +400,22 @@ namespace Hospital_registration
                 string information = Information.Text;
                 int assistantId = loggedInUserIdOtherRoles;
 
-                // Використовуйте збережений selectedPatientId як ідентифікатор пацієнта
+         
                 int patientId = selectedPatientId;
 
-                // Отримати ідентифікатор пацієнта, наприклад, із якось іншого джерела або зберегти його у змінній
+   
 
 
                 string message = $"Doctor ID: {selectedDoctorId}\nDay: {selectedDayStr}\nHours: {selectedTime}\nPatient ID: {patientId}\nInformation: {information}";
                 MessageBox.Show(message);
 
-                // Викликати метод для оновлення запису із відповідними даними
+  
                 UpdateAppointmentWithPatientId(selectedDoctorId, selectedDay, selectedTime, information, patientId, loggedInUserIdOtherRoles);
 
             }
             else
             {
-                MessageBox.Show("Будь ласка, заповніть всі поля перед збереженням.");
+                MessageBox.Show("Please fill in all fields before saving.");
             }
         }
         //DoctorPage
@@ -428,7 +423,7 @@ namespace Hospital_registration
         {
             for (int hour = 0; hour <= 24; hour++)
             {
-                for (int minute = 0; minute < 60; minute += 30) // Додаємо півгодинний інтервал
+                for (int minute = 0; minute < 60; minute += 30) 
                 {
                     string time = $"{hour:D2}:{minute:D2}";
                     WorkHListBox1.Items.Add(time);
@@ -466,11 +461,11 @@ namespace Hospital_registration
 
                     DateTime selectedDate = monthCalendar1.SelectionStart.Date.AddHours(hour).AddMinutes(minute);
 
-                    // Перевірка, чи обрана дата не менше поточної дати
+                    
                     if (selectedDate.Date < DateTime.Today)
                     {
-                        MessageBox.Show("Помилка: Неможливо зробити запис на заднє число.");
-                        continue; // Пропустити цей запис і перейти до наступного
+                        MessageBox.Show("Error: Unable to make a record for a past date.");
+                        continue; 
                     }
 
                     string insertQuery = "INSERT INTO `appointments` (`id`, `doctor_id`, `Day`, `Hour`, `patient_id`, `status` , `Assistant_id` ) VALUES (NULL, @doctorId, @day, @hour, NULL, 'available', @AssistantId)";
@@ -486,18 +481,18 @@ namespace Hospital_registration
                         insertCommand.ExecuteNonQuery();
 
                         string dayAndTimeInfo = $"{selectedDate:dd/MM/yyyy HH:mm}-{selectedDate.AddMinutes(30):HH:mm}";
-                        MessageBox.Show($"Робочі години збережено для дня: {selectedDate:dd/MM/yyyy}\nЧас: {dayAndTimeInfo}");
+                        MessageBox.Show($"Working hours saved for the day: {selectedDate:dd/MM/yyyy}\nTime: {dayAndTimeInfo}");
                     }
                     catch (MySqlException ex)
                     {
                         if (ex.Number == 1062)
                         {
-                            string errorMessage = $"Помилка: Робочі години вже збережено для дня {selectedDate:dd/MM/yyyy HH:mm}";
+                            string errorMessage = $"Error: Working hours already saved for the day {selectedDate:dd/MM/yyyy HH:mm}";
                             MessageBox.Show(errorMessage);
                         }
                         else
                         {
-                            MessageBox.Show("Помилка при збереженні робочих годин: " + ex.Message);
+                            MessageBox.Show("Error saving working hours: " + ex.Message);
                         }
                     }
                 }
@@ -505,7 +500,7 @@ namespace Hospital_registration
                 db.closeConnection();
             }
 
-            MessageBox.Show("Робочі години збережено.");
+            MessageBox.Show("Working hours saved.");
         }
         //PathienList
         private void LoadUnapprovedAppointments()
@@ -526,8 +521,8 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-                // Встановити DataTable як DataSource для DataGridView
-                dataGridViewAppointments.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+                
+                dataGridViewAppointments.Rows.Clear(); 
                 foreach (DataRow row in dataTable.Rows)
                 {
                     int rowIndex = dataGridViewAppointments.Rows.Add();
@@ -537,11 +532,11 @@ namespace Hospital_registration
                     dataGridViewRow.Cells["TDay"].Value = row["Day"];
                     dataGridViewRow.Cells["THour"].Value = row["Hour"];
                     dataGridViewRow.Cells["TInformation"].Value = row["information"];
-                    dataGridViewRow.Cells["CofId"].Value = row["id"]; // Приховане значення "ID"
+                    dataGridViewRow.Cells["CofId"].Value = row["id"];
                 }
             }
 
-            // Оновити DataGridView
+      
             dataGridViewAppointments.Update();
             dataGridViewAppointments.Refresh();
         }
@@ -560,12 +555,12 @@ namespace Hospital_registration
                 int rowsAffected = updateCommand.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
-                    MessageBox.Show("Запис пацієнта затверджено.");
+                    MessageBox.Show("Patient record approved.");
                     LoadUnapprovedAppointments();
                 }
                 else
                 {
-                    MessageBox.Show("Помилка під час затвердження запису.");
+                    MessageBox.Show("Error during record approval.");
                 }
             }
         }
@@ -577,13 +572,12 @@ namespace Hospital_registration
                 string appointmentIdText = dataGridViewAppointments.Rows[e.RowIndex].Cells["CofId"].Value.ToString();
                 {
                     MessageBox.Show("2");
-                    // Отримати значення ID з вибраного рядка
+                 
                     int appointmentId = Convert.ToInt32(dataGridViewAppointments.Rows[e.RowIndex].Cells["CofId"].Value);
 
-                    // Викликати метод ApproveAppointment і передати appointmentId
+             
                     ApproveAppointment(appointmentId);
 
-                    // Відобразити appointmentId в MessageBox
                     MessageBox.Show(appointmentId.ToString());
                 }
             }
@@ -607,8 +601,7 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-                // Встановити DataTable як DataSource для DataGridView
-                dataGridView1.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+                dataGridView1.Rows.Clear();
                 foreach (DataRow row in dataTable.Rows)
                 {
                     int rowIndex = dataGridView1.Rows.Add();
@@ -618,11 +611,10 @@ namespace Hospital_registration
                     dataGridViewRow.Cells["TuDay"].Value = row["Day"];
                     dataGridViewRow.Cells["TuHour"].Value = row["Hour"];
                     dataGridViewRow.Cells["TuInformation"].Value = row["information"];
-                    dataGridViewRow.Cells["CofuId"].Value = row["id"]; // Приховане значення "ID"
+                    dataGridViewRow.Cells["CofuId"].Value = row["id"]; 
                 }
             }
 
-            // Оновити DataGridView
             dataGridView1.Update();
             dataGridView1.Refresh();
         }
@@ -635,7 +627,7 @@ namespace Hospital_registration
                 {
                     string selectedRecordType = recordTypeComboBox.SelectedItem.ToString();
 
-                    // Перевірка вибору і встановлення видимості полів
+                
                     if (selectedRecordType == "Consultation")
                     {
                         ConsultationTextBox.Visible = true;
@@ -661,14 +653,14 @@ namespace Hospital_registration
                         MedecineTextBox.Visible = false;
                         ReferalTextBox.Visible = true;
                         ConsulionTextBox.Visible = false;
-                        // Очищаємо текст на схованих полях
+                     
                         ConsultationTextBox.Text = "";
                         MedecineTextBox.Text = "";
                         ConsulionTextBox.Text = "";
                     }
                     else
                     {
-                        // Обробка інших можливих типів записів
+                   
                     }
                 }
             }
@@ -694,8 +686,7 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-                // Встановлюємо DataTable як DataSource для DataGridView
-                dataGridView2.Rows.Clear(); // Очищаємо рядки перед додаванням нових даних
+                dataGridView2.Rows.Clear(); 
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     int rowIndex = dataGridView2.Rows.Add();
@@ -706,11 +697,10 @@ namespace Hospital_registration
                     dataGridViewRow.Cells["ITAME"].Value = dataRow["Hour"];
                     dataGridViewRow.Cells["Birth"].Value = dataRow["Birth"];
 
-                    dataGridViewRow.Cells["IID"].Value = dataRow["patient_id"]; // Приховане значення "ID"
+                    dataGridViewRow.Cells["IID"].Value = dataRow["patient_id"]; 
                 }
             }
 
-            // Оновити DataGridView
             dataGridView2.Update();
             dataGridView2.Refresh();
         }
@@ -724,21 +714,18 @@ namespace Hospital_registration
                 {
                     DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
 
-                    // Отримайте інформацію про обраного пацієнта з вибраного рядка
+                   
                     selectedPatientName = row.Cells["INAME"].Value.ToString();
                     selectedPatientSurname = row.Cells["ISURNAME"].Value.ToString();
                     selectedPatientIds = Convert.ToInt32(row.Cells["IID"].Value);
-                    // Передбачаємо, що дата народження знаходиться в стовпці "Birth" (замініть на відповідну назву стовпця)
+                   
                     selectedPatientBirthDate = Convert.ToDateTime(row.Cells["Birth"].Value);
 
-                    // Виведіть MessageBox з інформацією про обраного пацієнта
-                    string message = $"Ім'я: {selectedPatientName}\nПрізвище: {selectedPatientSurname}\n" +
-                                     $"ID: {selectedPatientIds}\nДата народження: {selectedPatientBirthDate:dd/MM/yyyy}";
-                    MessageBox.Show(message, "Інформація про пацієнта", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             
+                    string message = $"Name: {selectedPatientName}\nSurname: {selectedPatientSurname}\n" +
+                                     $"ID: {selectedPatientIds}\nDate of birth: {selectedPatientBirthDate:dd/MM/yyyy}";
+                    MessageBox.Show(message, "Patient information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Тепер ви можете використовувати ці дані в інших частинах коду
-                    // Наприклад, відобразити інформацію про пацієнта у текстових полях або іншому інтерфейсі
-                    // Або виконати будь-які інші дії з цими даними
                 }
             }
         }
@@ -748,7 +735,7 @@ namespace Hospital_registration
             DateTime today = DateTime.Today;
             using (DB db = new DB())
             {
-                // Отримайте значення з елементів інтерфейсу
+        
                 string meetingType = recordTypeComboBox.SelectedItem.ToString();
 
                 string description = ConsultationTextBox.Text;
@@ -761,7 +748,7 @@ namespace Hospital_registration
 
                 MySqlCommand command = new MySqlCommand(insertQuery, db.GetConnection());
                 command.Parameters.AddWithValue("@DoctorID", selectedDoctorId);
-                command.Parameters.AddWithValue("@AssistantID", loggedInUserIdOtherRoles); // Додайте параметр для AssistantID
+                command.Parameters.AddWithValue("@AssistantID", loggedInUserIdOtherRoles); 
                 command.Parameters.AddWithValue("@PatientID", selectedPatientIds);
                 command.Parameters.AddWithValue("@MeetingType", meetingType);
                 command.Parameters.AddWithValue("@MeetingDate", today);
@@ -779,18 +766,24 @@ namespace Hospital_registration
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Запис медичного призначення збережено.");
+                        MessageBox.Show("Medical prescription saved.");
                     }
                     else
                     {
-                        MessageBox.Show("Помилка при збереженні запису медичного призначення.");
+                        MessageBox.Show("Error saving medical prescription record.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Помилка при збереженні запису медичного призначення: " + ex.Message);
+                    MessageBox.Show("Error saving medical prescription record: " + ex.Message);
                 }
             }
+        }
+
+        private void closeButton_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+
         }
     }
 }
