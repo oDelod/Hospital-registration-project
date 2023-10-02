@@ -678,6 +678,8 @@
             panel1.Size = new Size(1980, 857);
             panel1.TabIndex = 3;
             panel1.Paint += panel1_Paint;
+            panel1.MouseDown += panel1_MouseDown;
+            panel1.MouseMove += panel1_MouseMove;
             // 
             // ActivationButton
             // 
@@ -892,6 +894,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1980, 857);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             Name = "AdministratorForm";
             Text = "AdministratorForm";

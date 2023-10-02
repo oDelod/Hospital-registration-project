@@ -99,6 +99,8 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1165, 678);
             panel1.TabIndex = 2;
+            panel1.MouseDown += panel1_MouseDown;
+            panel1.MouseMove += panel1_MouseMove;
             // 
             // ConsulionTextBox
             // 
@@ -469,6 +471,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1165, 678);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "DoctorForm";
             Text = "DoctorForm";
             panel1.ResumeLayout(false);

@@ -24,7 +24,7 @@ namespace Hospital_registration
             InitializeComponent();
             LoadSpecialties();
             this.loggedInUserId = loggedInUserId;
-          
+
             FillDataGridView();
             FillDataGridViewMed();
             FillDataGrivRef();
@@ -102,9 +102,9 @@ namespace Hospital_registration
             {
                 int selectedIndex = doctorsListBox.SelectedIndex;
                 int selectedDoctorId = doctorIdDictionary[selectedIndex];
-             
+
                 LoadDoctorAvailability(selectedDoctorId);
-            ;
+                ;
             }
         }
 
@@ -118,7 +118,7 @@ namespace Hospital_registration
                 string selectedDayStr = Day.SelectedItem.ToString();
                 DateTime selectedDay = DateTime.ParseExact(selectedDayStr, "dd/MM/yyyy", null);
 
-             
+
                 LoadAvailableHours(selectedDoctorId, selectedDay);
             }
         }
@@ -161,7 +161,7 @@ namespace Hospital_registration
                 string selectedTime = Hours.SelectedItem.ToString();
                 string information = Information.Text;
 
-                int patientId = loggedInUserId;  
+                int patientId = loggedInUserId;
 
                 string message = $"Doctor ID: {selectedDoctorId}\nDay: {selectedDayStr}\nHours: {selectedTime}\nPatient ID: {patientId}\nInformation: {information}";
                 MessageBox.Show(message);
@@ -244,7 +244,7 @@ namespace Hospital_registration
 
         private void FillDataGridView()
         {
-            int patientId = loggedInUserId; 
+            int patientId = loggedInUserId;
 
             using (DB db = new DB())
             {
@@ -267,8 +267,8 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-                
-                ConsultationGridView.Rows.Clear(); 
+
+                ConsultationGridView.Rows.Clear();
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     int rowIndex = ConsultationGridView.Rows.Add();
@@ -280,11 +280,11 @@ namespace Hospital_registration
                     dataGridViewRow.Cells["Description"].Value = dataRow["Description"];
 
 
-                    dataGridViewRow.Cells["Conclusion"].Value = dataRow["Conclusion"]; 
+                    dataGridViewRow.Cells["Conclusion"].Value = dataRow["Conclusion"];
                 }
             }
 
-         
+
             ConsultationGridView.Update();
             ConsultationGridView.Refresh();
 
@@ -297,7 +297,7 @@ namespace Hospital_registration
         }
         private void FillDataGridViewMed()
         {
-            int patientId = loggedInUserId; 
+            int patientId = loggedInUserId;
 
             using (DB db = new DB())
             {
@@ -319,8 +319,8 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-               
-                dataGridView1.Rows.Clear(); 
+
+                dataGridView1.Rows.Clear();
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     int rowIndex = dataGridView1.Rows.Add();
@@ -336,7 +336,7 @@ namespace Hospital_registration
                 }
             }
 
-       
+
             dataGridView1.Update();
             dataGridView1.Refresh();
 
@@ -346,7 +346,7 @@ namespace Hospital_registration
 
         private void FillDataGrivRef()
         {
-            int patientId = loggedInUserId; 
+            int patientId = loggedInUserId;
 
             using (DB db = new DB())
             {
@@ -368,8 +368,8 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-               
-                dataGridView2.Rows.Clear(); 
+
+                dataGridView2.Rows.Clear();
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     int rowIndex = dataGridView2.Rows.Add();
@@ -385,11 +385,26 @@ namespace Hospital_registration
                 }
             }
 
-            
+
             dataGridView2.Update();
             dataGridView2.Refresh();
 
 
+        }
+        Point LastpPoint;
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - LastpPoint.X;
+                this.Top += e.Y - LastpPoint.Y;
+
+            }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            LastpPoint = new Point(e.X, e.Y);
         }
     }
 }

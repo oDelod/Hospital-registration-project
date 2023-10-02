@@ -79,19 +79,21 @@
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2253, 800);
+            panel1.Size = new Size(1502, 533);
             panel1.TabIndex = 1;
+            panel1.MouseDown += panel1_MouseDown;
+            panel1.MouseMove += panel1_MouseMove;
             // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { DoctorName2, DoctorSurname2, DSpecialization2, MeetingDate2, Referal });
-            dataGridView2.Location = new Point(1762, 164);
+            dataGridView2.Location = new Point(1175, 109);
+            dataGridView2.Margin = new Padding(2);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 72;
-            dataGridView2.Size = new Size(420, 262);
+            dataGridView2.Size = new Size(280, 175);
             dataGridView2.TabIndex = 38;
             // 
             // DoctorName2
@@ -133,10 +135,11 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DoctorName1, DoctorSurname1, DSpecialization1, MeetingDate1, Medications });
-            dataGridView1.Location = new Point(1315, 164);
+            dataGridView1.Location = new Point(877, 109);
+            dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 72;
-            dataGridView1.Size = new Size(420, 262);
+            dataGridView1.Size = new Size(280, 175);
             dataGridView1.TabIndex = 37;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -179,10 +182,11 @@
             // 
             ConsultationGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ConsultationGridView.Columns.AddRange(new DataGridViewColumn[] { DoctorName, DoctorSurname, DSpecialization, MeetingDate, Description, Conclusion });
-            ConsultationGridView.Location = new Point(879, 164);
+            ConsultationGridView.Location = new Point(586, 109);
+            ConsultationGridView.Margin = new Padding(2);
             ConsultationGridView.Name = "ConsultationGridView";
             ConsultationGridView.RowHeadersWidth = 72;
-            ConsultationGridView.Size = new Size(420, 262);
+            ConsultationGridView.Size = new Size(280, 175);
             ConsultationGridView.TabIndex = 36;
             ConsultationGridView.CellContentClick += Consultation_CellContentClick;
             // 
@@ -230,9 +234,10 @@
             // 
             // SaveInformation
             // 
-            SaveInformation.Location = new Point(234, 532);
+            SaveInformation.Location = new Point(156, 355);
+            SaveInformation.Margin = new Padding(2);
             SaveInformation.Name = "SaveInformation";
-            SaveInformation.Size = new Size(271, 40);
+            SaveInformation.Size = new Size(181, 27);
             SaveInformation.TabIndex = 35;
             SaveInformation.Text = "Save Information";
             SaveInformation.UseVisualStyleBackColor = true;
@@ -240,51 +245,48 @@
             // 
             // Information
             // 
-            Information.Location = new Point(676, 212);
+            Information.Location = new Point(451, 141);
+            Information.Margin = new Padding(2);
             Information.Name = "Information";
-            Information.Size = new Size(175, 35);
+            Information.Size = new Size(118, 27);
             Information.TabIndex = 34;
             // 
             // Hours
             // 
             Hours.FormattingEnabled = true;
-            Hours.ItemHeight = 30;
-            Hours.Location = new Point(380, 337);
-            Hours.Margin = new Padding(4);
+            Hours.ItemHeight = 20;
+            Hours.Location = new Point(253, 225);
             Hours.Name = "Hours";
-            Hours.Size = new Size(215, 154);
+            Hours.Size = new Size(145, 104);
             Hours.TabIndex = 33;
             // 
             // Day
             // 
             Day.FormattingEnabled = true;
-            Day.ItemHeight = 30;
-            Day.Location = new Point(125, 337);
-            Day.Margin = new Padding(4);
+            Day.ItemHeight = 20;
+            Day.Location = new Point(83, 225);
             Day.Name = "Day";
-            Day.Size = new Size(215, 154);
+            Day.Size = new Size(145, 104);
             Day.TabIndex = 32;
             Day.SelectedIndexChanged += Day_SelectedIndexChanged;
             // 
             // doctorsListBox
             // 
             doctorsListBox.FormattingEnabled = true;
-            doctorsListBox.ItemHeight = 30;
-            doctorsListBox.Location = new Point(380, 175);
-            doctorsListBox.Margin = new Padding(4);
+            doctorsListBox.ItemHeight = 20;
+            doctorsListBox.Location = new Point(253, 117);
             doctorsListBox.Name = "doctorsListBox";
-            doctorsListBox.Size = new Size(215, 154);
+            doctorsListBox.Size = new Size(145, 104);
             doctorsListBox.TabIndex = 31;
             doctorsListBox.SelectedIndexChanged += doctorsListBox_SelectedIndexChanged;
             // 
             // specialListBox
             // 
             specialListBox.FormattingEnabled = true;
-            specialListBox.ItemHeight = 30;
-            specialListBox.Location = new Point(125, 175);
-            specialListBox.Margin = new Padding(4);
+            specialListBox.ItemHeight = 20;
+            specialListBox.Location = new Point(83, 117);
             specialListBox.Name = "specialListBox";
-            specialListBox.Size = new Size(215, 154);
+            specialListBox.Size = new Size(145, 104);
             specialListBox.TabIndex = 30;
             specialListBox.SelectedIndexChanged += Special_SelectedIndexChanged;
             // 
@@ -295,9 +297,8 @@
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2253, 134);
+            panel2.Size = new Size(1502, 89);
             panel2.TabIndex = 0;
             // 
             // closeButton
@@ -306,10 +307,9 @@
             closeButton.Cursor = Cursors.Hand;
             closeButton.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             closeButton.ForeColor = Color.White;
-            closeButton.Location = new Point(2203, 0);
-            closeButton.Margin = new Padding(4, 0, 4, 0);
+            closeButton.Location = new Point(1469, 0);
             closeButton.Name = "closeButton";
-            closeButton.Size = new Size(50, 48);
+            closeButton.Size = new Size(37, 34);
             closeButton.TabIndex = 1;
             closeButton.Text = "X";
             closeButton.Click += closeButton_Click;
@@ -320,20 +320,19 @@
             label1.Font = new Font("Times New Roman", 24F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlLightLight;
             label1.Location = new Point(0, 0);
-            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(2253, 134);
+            label1.Size = new Size(1502, 89);
             label1.TabIndex = 0;
             label1.Text = "Pathient office";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // PatientForm
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2253, 800);
+            ClientSize = new Size(1502, 533);
             Controls.Add(panel1);
-            Margin = new Padding(4);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "PatientForm";
             Text = "PatientForm";
             panel1.ResumeLayout(false);

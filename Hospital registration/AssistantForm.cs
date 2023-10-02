@@ -32,10 +32,10 @@ namespace Hospital_registration
             LoadSpecialties();
             this.loggedInUserIdOtherRoles = loggedInUserIdOtherRoles;
             this.loggedInUserId = loggedInUserIdOtherRoles;
-           
+
             PathientList();
             DoctorList();
-            InitializeHoursList(); 
+            InitializeHoursList();
             recordTypeComboBox.SelectedItem = "Consultation";
 
 
@@ -114,9 +114,9 @@ namespace Hospital_registration
                 {
                     int selectedIndex = doctorsListBox.SelectedIndex;
                     int selectedDoctorId = doctorIdDictionary[selectedIndex];
-                   MessageBox.Show($"Selected Doctor ID: {selectedDoctorId}");
+                    MessageBox.Show($"Selected Doctor ID: {selectedDoctorId}");
                     LoadDoctorAvailability(selectedDoctorId);
-                
+
 
                 }
             }
@@ -275,9 +275,9 @@ namespace Hospital_registration
                 MySqlCommand command = new MySqlCommand(query, db.GetConnection());
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                adapter.Fill(patientDataTable); 
+                adapter.Fill(patientDataTable);
 
-    
+
                 dataGridViewPatients.Rows.Clear();
 
                 foreach (DataRow dataRow in patientDataTable.Rows)
@@ -305,15 +305,15 @@ namespace Hospital_registration
         {
             if (e.RowIndex >= 0)
             {
-              
+
                 DataGridViewRow selectedRow = dataGridViewPatients.Rows[e.RowIndex];
                 int patientId = Convert.ToInt32(selectedRow.Cells["UID1"].Value);
                 string patientLogin = selectedRow.Cells["Login1"].Value.ToString();
 
-               
+
                 selectedPatientId = patientId;
 
-            
+
                 string message = $"Patient identifier: {patientId}\nPatient login: {patientLogin}";
                 MessageBox.Show(message, "Patient information");
             }
@@ -339,15 +339,15 @@ namespace Hospital_registration
         {
             if (e.RowIndex >= 0)
             {
-          
+
                 DataGridViewRow selectedRow = dataGridViewDoctor.Rows[e.RowIndex];
                 int doctorId = Convert.ToInt32(selectedRow.Cells["PUID"].Value);
                 string doctorLogin = selectedRow.Cells["PLogin"].Value.ToString();
 
-               
+
                 selectedDoctorId = doctorId;
 
-               
+
                 string message = $"Doctor identifier: {doctorId}\nPatient login: {doctorLogin}";
                 MessageBox.Show(message, "Patient information");
                 LoadDoctorAvailability(selectedDoctorId);
@@ -368,9 +368,9 @@ namespace Hospital_registration
                 MySqlCommand command = new MySqlCommand(query, db.GetConnection());
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                adapter.Fill(patientDataTable); 
+                adapter.Fill(patientDataTable);
 
-               
+
                 dataGridViewDoctor.Rows.Clear();
 
                 foreach (DataRow dataRow in patientDataTable.Rows)
@@ -400,16 +400,16 @@ namespace Hospital_registration
                 string information = Information.Text;
                 int assistantId = loggedInUserIdOtherRoles;
 
-         
+
                 int patientId = selectedPatientId;
 
-   
+
 
 
                 string message = $"Doctor ID: {selectedDoctorId}\nDay: {selectedDayStr}\nHours: {selectedTime}\nPatient ID: {patientId}\nInformation: {information}";
                 MessageBox.Show(message);
 
-  
+
                 UpdateAppointmentWithPatientId(selectedDoctorId, selectedDay, selectedTime, information, patientId, loggedInUserIdOtherRoles);
 
             }
@@ -423,7 +423,7 @@ namespace Hospital_registration
         {
             for (int hour = 0; hour <= 24; hour++)
             {
-                for (int minute = 0; minute < 60; minute += 30) 
+                for (int minute = 0; minute < 60; minute += 30)
                 {
                     string time = $"{hour:D2}:{minute:D2}";
                     WorkHListBox1.Items.Add(time);
@@ -461,11 +461,11 @@ namespace Hospital_registration
 
                     DateTime selectedDate = monthCalendar1.SelectionStart.Date.AddHours(hour).AddMinutes(minute);
 
-                    
+
                     if (selectedDate.Date < DateTime.Today)
                     {
                         MessageBox.Show("Error: Unable to make a record for a past date.");
-                        continue; 
+                        continue;
                     }
 
                     string insertQuery = "INSERT INTO `appointments` (`id`, `doctor_id`, `Day`, `Hour`, `patient_id`, `status` , `Assistant_id` ) VALUES (NULL, @doctorId, @day, @hour, NULL, 'available', @AssistantId)";
@@ -521,8 +521,8 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-                
-                dataGridViewAppointments.Rows.Clear(); 
+
+                dataGridViewAppointments.Rows.Clear();
                 foreach (DataRow row in dataTable.Rows)
                 {
                     int rowIndex = dataGridViewAppointments.Rows.Add();
@@ -536,7 +536,7 @@ namespace Hospital_registration
                 }
             }
 
-      
+
             dataGridViewAppointments.Update();
             dataGridViewAppointments.Refresh();
         }
@@ -572,10 +572,10 @@ namespace Hospital_registration
                 string appointmentIdText = dataGridViewAppointments.Rows[e.RowIndex].Cells["CofId"].Value.ToString();
                 {
                     MessageBox.Show("2");
-                 
+
                     int appointmentId = Convert.ToInt32(dataGridViewAppointments.Rows[e.RowIndex].Cells["CofId"].Value);
 
-             
+
                     ApproveAppointment(appointmentId);
 
                     MessageBox.Show(appointmentId.ToString());
@@ -611,7 +611,7 @@ namespace Hospital_registration
                     dataGridViewRow.Cells["TuDay"].Value = row["Day"];
                     dataGridViewRow.Cells["TuHour"].Value = row["Hour"];
                     dataGridViewRow.Cells["TuInformation"].Value = row["information"];
-                    dataGridViewRow.Cells["CofuId"].Value = row["id"]; 
+                    dataGridViewRow.Cells["CofuId"].Value = row["id"];
                 }
             }
 
@@ -627,7 +627,7 @@ namespace Hospital_registration
                 {
                     string selectedRecordType = recordTypeComboBox.SelectedItem.ToString();
 
-                
+
                     if (selectedRecordType == "Consultation")
                     {
                         ConsultationTextBox.Visible = true;
@@ -653,14 +653,14 @@ namespace Hospital_registration
                         MedecineTextBox.Visible = false;
                         ReferalTextBox.Visible = true;
                         ConsulionTextBox.Visible = false;
-                     
+
                         ConsultationTextBox.Text = "";
                         MedecineTextBox.Text = "";
                         ConsulionTextBox.Text = "";
                     }
                     else
                     {
-                   
+
                     }
                 }
             }
@@ -686,7 +686,7 @@ namespace Hospital_registration
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(dataTable);
 
-                dataGridView2.Rows.Clear(); 
+                dataGridView2.Rows.Clear();
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
                     int rowIndex = dataGridView2.Rows.Add();
@@ -697,7 +697,7 @@ namespace Hospital_registration
                     dataGridViewRow.Cells["ITAME"].Value = dataRow["Hour"];
                     dataGridViewRow.Cells["Birth"].Value = dataRow["Birth"];
 
-                    dataGridViewRow.Cells["IID"].Value = dataRow["patient_id"]; 
+                    dataGridViewRow.Cells["IID"].Value = dataRow["patient_id"];
                 }
             }
 
@@ -714,14 +714,14 @@ namespace Hospital_registration
                 {
                     DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
 
-                   
+
                     selectedPatientName = row.Cells["INAME"].Value.ToString();
                     selectedPatientSurname = row.Cells["ISURNAME"].Value.ToString();
                     selectedPatientIds = Convert.ToInt32(row.Cells["IID"].Value);
-                   
+
                     selectedPatientBirthDate = Convert.ToDateTime(row.Cells["Birth"].Value);
 
-             
+
                     string message = $"Name: {selectedPatientName}\nSurname: {selectedPatientSurname}\n" +
                                      $"ID: {selectedPatientIds}\nDate of birth: {selectedPatientBirthDate:dd/MM/yyyy}";
                     MessageBox.Show(message, "Patient information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -735,7 +735,7 @@ namespace Hospital_registration
             DateTime today = DateTime.Today;
             using (DB db = new DB())
             {
-        
+
                 string meetingType = recordTypeComboBox.SelectedItem.ToString();
 
                 string description = ConsultationTextBox.Text;
@@ -748,7 +748,7 @@ namespace Hospital_registration
 
                 MySqlCommand command = new MySqlCommand(insertQuery, db.GetConnection());
                 command.Parameters.AddWithValue("@DoctorID", selectedDoctorId);
-                command.Parameters.AddWithValue("@AssistantID", loggedInUserIdOtherRoles); 
+                command.Parameters.AddWithValue("@AssistantID", loggedInUserIdOtherRoles);
                 command.Parameters.AddWithValue("@PatientID", selectedPatientIds);
                 command.Parameters.AddWithValue("@MeetingType", meetingType);
                 command.Parameters.AddWithValue("@MeetingDate", today);
@@ -784,6 +784,21 @@ namespace Hospital_registration
         {
             Application.Exit();
 
+        }
+        Point LastpPoint;
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - LastpPoint.X;
+                this.Top += e.Y - LastpPoint.Y;
+
+            }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            LastpPoint = new Point(e.X, e.Y);
         }
     }
 }

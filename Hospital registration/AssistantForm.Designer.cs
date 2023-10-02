@@ -223,6 +223,8 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1493, 936);
             panel1.TabIndex = 2;
+            panel1.MouseDown += panel1_MouseDown;
+            panel1.MouseMove += panel1_MouseMove;
             // 
             // dataGridView2
             // 
@@ -652,6 +654,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1493, 936);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             Name = "AssistantForm";
             Text = "AssistantForm";
